@@ -1,3 +1,3 @@
 kagu_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: KaguBundle:Default:index }
+    path:     /
+    defaults: { _controller: KaguBundle:Ambiance:index }

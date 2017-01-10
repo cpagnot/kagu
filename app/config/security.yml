@@ -33,7 +33,7 @@ security:
         - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/vitrine/, role: ROLE_USER }
+        - { path: ^/vitrine, role: ROLE_VALIDE }
         
             # activate different ways to authenticate
 
