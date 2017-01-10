@@ -1,3 +1,7 @@
+kagu:
+    resource: "@KaguBundle/Resources/config/routing.yml"
+    prefix:   /
+
 vitrine:
     resource: "@VitrineBundle/Resources/config/routing.yml"
     prefix:   /
