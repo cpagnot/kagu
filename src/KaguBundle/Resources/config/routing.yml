@@ -1,3 +1,23 @@
 kagu_homepage:
-    path:     /
+    path:     /dashboard
+    defaults: { _controller: KaguBundle:Dashboard:index }
+
+kagu_add_ambiance:
+    path:    /ambiance/add
     defaults: { _controller: KaguBundle:Ambiance:index }
+
+kagu_delete_ambiance:
+    path:   /ambiance/delete/{ambiance}
+    defaults: { _controller: KaguBundle:Ambiance:delete }
+
+kagu_publish_ambiance:
+    path:   /ambiance/publish/{ambiance}
+    defaults: { _controller: KaguBundle:Ambiance:publish }
+
+kagu_edit_ambiance:
+    path:   /ambiance/edit/{ambiance}
+    defaults: { _controller: KaguBundle:Ambiance:edit }
+
+kagu_add_item:
+    path:   /ambiance/{ambiance}/add-item/
+    defaults: { _controller: KaguBundle:Ambiance:addItem }

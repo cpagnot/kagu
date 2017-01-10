@@ -15,12 +15,11 @@ class MeubleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('prix')
-            ->add('description')
-            ->add('titre')
-            ->add('annonce')
+            ->add('titre', 'text')
+            ->add('prix', 'text')
+            ->add('description', 'textarea')
             ->add('créer', 'submit');
-        ;
+        
     }
     
     /**
