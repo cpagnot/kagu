@@ -13,10 +13,35 @@ use AppBundle\Form\MeubleType;
 
 class AmbianceController extends Controller
 {
+
+
+    /**
+  *@Route("/ambiance", name="dashboard")
+  */
+  public function indexAction()
+  {
+    $em = $this->getDoctrine()->getManager();
+    $listAmbiance = $em->getRepository('AppBundle:Ambiance')
+      ->findBy(array('designer' => $this->get('security.token_storage')->getToken()->getUser()->getId() ));
+
+    $data = array();
+
+    foreach ($listAmbiance as $ambiance) {
+      $data[$ambiance->getId()] = array();
+      $data[$ambiance->getId()]['annonce'] = $ambiance;
+      $objets = $em->getRepository('AppBundle:Meuble')->findBy(array('annonce' => $ambiance->getId()));
+      $data[$ambiance->getId()]['objets'] = $objets;
+    }
+
+    return $this->render('KaguBundle:Ambiance:index.html.twig', array(
+          'ambiances' => $data
+      ));
+  }
+
 	/**
-     * @Route("/index", name="ambiance")
+     * @Route("/add", name="ambiance")
      */
-    public function indexAction(Request $request)
+    public function addAction(Request $request)
     {
     	$ambiance = new Ambiance();
     	$form = $this->get('form.factory')->create(new AmbianceType, $ambiance);
@@ -31,10 +56,10 @@ class AmbianceController extends Controller
       		$em->flush();
       		$request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
-      		return $this->redirect($this->generateUrl('kagu_homepage'));
+      		return $this->redirect($this->generateUrl('kagu_index_ambiance'));
     	}
   
-        return $this->render('KaguBundle:Ambiance:index.html.twig', array(
+        return $this->render('KaguBundle:Ambiance:add.html.twig', array(
       		'form' => $form->createView()
       ));
     }
@@ -51,7 +76,7 @@ class AmbianceController extends Controller
         dump($e);
       }
 
-      return $this->redirect($this->generateUrl('kagu_homepage'));
+      return $this->redirect($this->generateUrl('kagu_index_ambiance'));
 
 
     }
@@ -69,7 +94,7 @@ class AmbianceController extends Controller
         dump($e);
       }
 
-      return $this->redirect($this->generateUrl('kagu_homepage'));
+      return $this->redirect($this->generateUrl('kagu_index_ambiance'));
     }
 
     public function editAction(Request $request, $ambiance)
@@ -89,7 +114,7 @@ class AmbianceController extends Controller
           $em->flush();
           $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
-          return $this->redirect($this->generateUrl('kagu_homepage'));
+          return $this->redirect($this->generateUrl('kagu_index_ambiance'));
       }
   
         return $this->render('KaguBundle:Ambiance:index.html.twig', array(
@@ -111,7 +136,7 @@ class AmbianceController extends Controller
           $em->flush();
           $request->getSession()->getFlashBag()->add('notice', 'Meuble bien ajouté.');
 
-          return $this->redirect($this->generateUrl('kagu_homepage'));
+          return $this->redirect($this->generateUrl('kagu_index_ambiance'));
       }
   
         return $this->render('KaguBundle:Meuble:add.html.twig', array(

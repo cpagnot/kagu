@@ -2,9 +2,17 @@ kagu_homepage:
     path:     /dashboard
     defaults: { _controller: KaguBundle:Dashboard:index }
 
+kagu_index_profil:
+    path:   /profil/
+    defaults: { _controller: KaguBundle:Profil:index }
+
+kagu_index_ambiance:
+    path:   /ambiance/
+    defaults: { _controller: KaguBundle:Ambiance:index}
+
 kagu_add_ambiance:
     path:    /ambiance/add
-    defaults: { _controller: KaguBundle:Ambiance:index }
+    defaults: { _controller: KaguBundle:Ambiance:add }
 
 kagu_delete_ambiance:
     path:   /ambiance/delete/{ambiance}

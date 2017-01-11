@@ -4,7 +4,7 @@ kagu:
 
 vitrine:
     resource: "@VitrineBundle/Resources/config/routing.yml"
-    prefix:   /vitrine
+    prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"

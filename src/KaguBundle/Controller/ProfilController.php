@@ -7,16 +7,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-class DashboardController extends Controller {
+class ProfilController extends Controller
+{
 
-	/**
-	*@Route("/dashboard", name="dashboard")
-	*/
 	public function indexAction()
 	{
-		$em = $this->getDoctrine()->getManager();
-		$listAmbiance = $em->getRepository('AppBundle:Ambiance')->findAll();
-
-		return $this->render('KaguBundle:Dashboard:index.html.twig');
+		return $this->render('KaguBundle:Profil:index.html.twig');
 	}
+
 }

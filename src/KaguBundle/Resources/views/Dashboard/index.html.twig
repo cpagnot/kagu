@@ -1,32 +1,16 @@
-<a href="{{ path('kagu_add_ambiance') }}">Ajouter une ambiance</a>
-<h1>Liste de vos ambiances</h1>
-<ul>
-{%  for ambiance in ambiances %}
-	<li>
-		<h2>{{ ambiance.annonce.titre }}</h2>
-		<p>{{ ambiance.annonce.description }}</p>
-		<p> Annonce public :
-		{% if ambiance.annonce.public %}
-			Oui <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Retirer</a>
-		{% else %}
-			Non <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Publier</a>
-		{% endif %}
-		<br/>
-		<a href="{{ path('kagu_add_item', { ambiance: ambiance.annonce.id }) }}">Ajouter un objet</a>
-		<br/>
-		<a href="{{ path('kagu_edit_ambiance', { ambiance : ambiance.annonce.id }) }} ">Modifier</a>
-		<br/>
-		<a href="{{ path('kagu_delete_ambiance', { ambiance: ambiance.annonce.id }) }}">Supprimer</a>
-		<h3>Liste des objets</h3>
-		<ul>
-		{% for objet in ambiance.objets %}
-			<li>
-				<h4>{{ objet.titre }}</h4>
-				<p>{{ objet.prix }} €</p>
-				<p>{{ objet.description }}</p>
-			</li>
-		{% endfor %}
-		</ul>
-	</li>
-{% endfor %}
-</ul>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<header>
+			<ul id="menu">
+				<li><a href="{{ path('kagu_index_profil') }}">Mon profil</a></li>
+				<li><a href="">Wishlist</a></li>
+				<li><a href-"">Messagerie</a></li>
+				<li><a href="">Panier</a></li>
+			</ul>
+		</header>
+
+	</body>
+</html>
