@@ -18,7 +18,6 @@ class AmbianceType extends AbstractType
         $builder
             ->add('titre', 'text')
             ->add('description', 'textarea')
-            ->add('photo',  FileType::class, array('label' => 'photo (PNG, JPG)') )
             ->add('Créer', 'submit');
         ;
     }

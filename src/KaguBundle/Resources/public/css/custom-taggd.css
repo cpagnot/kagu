@@ -3,6 +3,10 @@
     margin: 50px auto;
 }
 
+#container > img {
+    max-width: 100%;
+}
+
 .button {
     background-image: url('../images/BTN_blanc.png') !important;
     background-color: rgba(0,0,0,0) !important;
