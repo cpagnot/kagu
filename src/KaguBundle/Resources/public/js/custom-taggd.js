@@ -28,7 +28,7 @@ $(document).ready(function(){
     	var y = event.offsetY;
     	x = x * 100 / $(this).width();
     	y = y * 100 / $(this).height();
-    	console.log('click');
+    	
     	var tag = taggd.addTag(
     		Taggd.Tag.createFromObject({
 	    		position: { x: x / 100,  y: y / 100  },
@@ -50,9 +50,11 @@ $(document).ready(function(){
     		}
 		});
   		i++;
-
-
 	});
+
+	$('#submit').click(function(){
+		var title = $('')
+	})
   		
 });
 

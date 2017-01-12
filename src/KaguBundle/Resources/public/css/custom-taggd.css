@@ -3,9 +3,7 @@
     margin: 50px auto;
 }
 
-#container > img {
-    max-width: 100%;
-}
+#container > imf 
 
 .button {
     background-image: url('../images/BTN_blanc.png') !important;
@@ -33,7 +31,7 @@
 
 .popup > h1:after {
     display: block;
-    height: 2px;
+    height: 4px;
     width: 50px;
     color: #FFEE88;
 }
