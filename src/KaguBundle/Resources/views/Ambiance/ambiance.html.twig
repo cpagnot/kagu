@@ -14,7 +14,7 @@
 	</div>
 	<div id="section_commentaire">
 		<h1>{{ ambiance.titre }}</h1>
-		<p>Ambiance proposé par {{ ambiance.designer.username }}
+		<p>Ambiance proposé par {{ ambiance.designer.username }} le {{ ambiance.dateCreation|date('d-m-Y') }}
 		<p>{% for tag in tags %} {{ tag.tag }} ,{% endfor %}
 		<p>{{ ambiance.description }}</p>
 		{% if commentaires %}

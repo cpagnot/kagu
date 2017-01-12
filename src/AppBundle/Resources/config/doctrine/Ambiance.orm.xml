@@ -9,6 +9,7 @@
     </id>
     <field name="titre" type="text" column="titre" length="65535" nullable="false"/>
     <field name="description" type="text" column="description" length="65535" nullable="false"/>
+    <field name="date_creation" type="date" column="date_creation" length="65535" nullable="true"/>
     <field name="public" type="boolean" column="public" nullable="false"/>
     <field name="disponible" type="boolean" column="disponible" nullable="false"/>
     <field name="vendu" type="boolean" column="vendu" nullable="false"/>
