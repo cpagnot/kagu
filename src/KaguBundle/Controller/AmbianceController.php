@@ -10,6 +10,8 @@ use AppBundle\Entity\Ambiance;
 use AppBundle\Form\AmbianceType;
 use AppBundle\Entity\Meuble;
 use AppBundle\Form\MeubleType;
+use AppBundle\Entity\Commentaire;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AmbianceController extends Controller
 {
@@ -143,6 +145,39 @@ class AmbianceController extends Controller
           'form' => $form->createView()
       ));
 
+    }
+
+    public function ambianceAction($ambiance)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $ambiance = $em->getRepository('AppBundle:Ambiance')->find($ambiance);
+      $meuble = $em->getRepository('AppBundle:Meuble')->findBy(array('annonce' => $ambiance ));
+      $tag = $em->getRepository('AppBundle:Tag')->findBy(array('ambiance' => $ambiance));
+      $commentaires = $em->getRepository('AppBundle:Commentaire')->findBy(array('annonce' => $ambiance));
+
+      return $this->render('KaguBundle:Ambiance:ambiance.html.twig', array(
+        'ambiance'      => $ambiance,
+        'meubles'       => $meuble,
+        'tags'          => $tag,
+        'commentaires'  => $commentaires
+      ));
+    }
+
+    public function addCommentAction($id, $comment)
+    {
+
+      $em = $this->getDoctrine()->getManager();
+
+      $com = new Commentaire();
+      $com->setUser($this->get('security.token_storage')->getToken()->getUser());
+      $com->setAnnonce($em->getRepository('AppBundle:Ambiance')->find($id));
+      $com->setCommentaire($comment);
+      $com->setDate(new \DateTime());
+
+      $em->persist($com);
+      $em->flush();
+
+      return new JsonResponse(array('comment' => $com ));
     }
 
 }

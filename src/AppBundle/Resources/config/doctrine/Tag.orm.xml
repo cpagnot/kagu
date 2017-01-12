@@ -2,17 +2,16 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\Tag" table="tag">
     <indexes>
-      <index name="meuble" columns="meuble"/>
+      <index name="ambiance" columns="ambiance"/>
     </indexes>
-    <id name="id" type="integer" column="ID">
+    <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="tag" type="text" column="tag" nullable="false"/>
-    <many-to-one field="meuble" target-entity="Meuble">
+    <field name="tag" type="text" column="tag" length="65535" nullable="false"/>
+    <many-to-one field="ambiance" target-entity="Ambiance">
       <join-columns>
-        <join-column name="meuble" referenced-column-name="id"/>
+        <join-column name="ambiance" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    
   </entity>
 </doctrine-mapping>

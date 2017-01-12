@@ -14,6 +14,10 @@ kagu_add_ambiance:
     path:    /ambiance/add
     defaults: { _controller: KaguBundle:Ambiance:add }
 
+kagu_ambiance_ambiance:
+    path:   /ambiance/ambiance/{ambiance}
+    defaults: { _controller: KaguBundle:Ambiance:ambiance }
+
 kagu_delete_ambiance:
     path:   /ambiance/delete/{ambiance}
     defaults: { _controller: KaguBundle:Ambiance:delete }
@@ -25,6 +29,12 @@ kagu_publish_ambiance:
 kagu_edit_ambiance:
     path:   /ambiance/edit/{ambiance}
     defaults: { _controller: KaguBundle:Ambiance:edit }
+
+kagu_comment_ambiance:
+    path:   /ambiance/id/{id}/comment/{comment}
+    defaults: { _controller: KaguBundle:Ambiance:addComment }
+    options:
+        expose: true
 
 kagu_add_item:
     path:   /ambiance/{ambiance}/add-item/

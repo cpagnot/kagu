@@ -12,6 +12,7 @@
     <field name="public" type="boolean" column="public" nullable="false"/>
     <field name="disponible" type="boolean" column="disponible" nullable="false"/>
     <field name="vendu" type="boolean" column="vendu" nullable="false"/>
+    <field name="photo" type="text" column="photo" length="65535" nullable="true"/>
     <many-to-one field="designer" target-entity="User">
       <join-columns>
         <join-column name="designer" referenced-column-name="ID"/>

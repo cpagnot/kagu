@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ ambiance.titre }}</title>
+	{% block stylesheets %}
+		<link rel="stylesheet" href="{{ asset('bundles/kagu/css/custom-taggd.css') }}" type="text/css" media="all" />
+		<link rel="stylesheet" href="{{ asset('css/taggd.css') }}" type="text/css" media="all" />
+		<link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}" type="text/css" media="all" />
+	{% endblock %}
+</head>
+<body>
+	<div id="container">
+		<img src="{{ asset('img/ambiance/'~ambiance.photo|e) }}" alt="{{ ambiance.description }}" id="ambiance">
+	</div>
+	<div id="section_commentaire">
+		<h1>{{ ambiance.titre }}</h1>
+		<p>Ambiance proposé par {{ ambiance.designer.username }}
+		<p>{% for tag in tags %} {{ tag.tag }} ,{% endfor %}
+		<p>{{ ambiance.description }}</p>
+		{% if commentaires %}
+			<h2>Commentaires</h2>
+			<hr>
+			{% for commentaire in commentaires %}
+				<p>{{ commentaire.commentaire }}</p>
+				<p>Par {{ commentaire.user.username }} le {{ commentaire.date|date('d-m-Y')}}
+				<hr>
+			{% endfor %}
+		{% endif %}
+	</div>
+	<textarea id="comment_value"></textarea>
+	<input type="button" id="send_comment" value="Envoyer">
+
+	<script src="{{ asset('js/jquery-3.1.1.js') }}"></script>
+	<script src="{{ asset('js/jquery.tagsinput.js') }}"></script>	
+	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+	<script src="{{ asset('bundles/kagu/js/taggd.js') }}"></script>
+	<script src="{{ asset('bundles/kagu/js/comment.js') }}"></script>
+	<script type="text/javascript">
+		var ambiance = {{ ambiance.id }};
+		var username = "{{ app.user.username }}";
+		$(document).ready(function(){
+			var image = document.getElementById('ambiance');
+			var options = {};
+			var data = [];
+
+			{% for meuble in meubles %}
+				data.push(
+					Taggd.Tag.createFromObject({
+			    		position: { x: {{ meuble.x / 100 }}, y: {{ meuble.y / 100 }} },
+			    		text: '<h1>{{ meuble.titre }}</h1><p>{{ meuble.description }}</p><p>{{ meuble.prix }}€</p>',
+			  		}).setButtonAttributes({
+			  			class : 'button',
+			  		}).setPopupAttributes({
+			  			class : 'popup'
+			  		})
+					)
+			{% endfor %}
+			var taggd = new Taggd(image, options, data);
+
+
+		}); 
+	</script>
+</body>
+</html>
