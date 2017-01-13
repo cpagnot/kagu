@@ -11,23 +11,125 @@
 <body>
 	<div class="main">	
 		<label>Titre</label>
-		<input type="text" name="titre">
+		<input type="text" name="titre" {% if ambiance is defined and ambiance.titre %}value="{{ ambiance.titre }}" {% endif %}/>
 		<label>Description</label>
-		<textarea></textarea>
-		<input type='file' id="imgInp" />
+		<textarea name="description">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>
+		{% if ambiance is not defined %}
+		<form id='img' method="post">
+			<input type='file' id="imgInp" name="upload" accept="image/*"/>
+		</form>
+		{% endif %}
 		<div id="container">
-	    	<img id="ambiance" src="#" alt="your image" />
+	    	<img id="ambiance" src="{% if ambiance is defined and ambiance.photo %} /kagu/web/img/ambiance/{{ ambiance.photo }}{% endif %}" alt="your image" />
 		</div>
 		<input type="button" id="submit" value="creer">
 	</div>
+	<div id="tag_container"></div>
 	<script src="{{ asset('js/jquery-3.1.1.js') }}"></script>
 	<script src="{{ asset('js/jquery.tagsinput.js') }}"></script>	
 	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 	<script src="{{ asset('bundles/kagu/js/taggd.js') }}"></script>
-	<script src="{{ asset('bundles/kagu/js/custom-taggd.js') }}"></script>
 	<script type="text/javascript">
+	{% if ambiance is defined %}
+		
+		var ambiance = {{ ambiance.id }};
+		$(document).ready(function(){
+			i = {{ meubles|length }};
+			var image = document.getElementById('ambiance');
+			var options = {};
+			var data = [];
+			
+			{% for key, meuble in meubles %}
+			var description = "{{ meuble.description|e }}";
+			var titre = "{{ meuble.titre }}";
+			var prix = "{{ meuble.prix }}";
+				data.push(
+					Taggd.Tag.createFromObject({
+			    		position: { x: {{ meuble.x }}, y: {{ meuble.y  }} },
+			    		text: '<span class="delete" data-index="' + {{ key}} + '" >X</span><input type="text" value="' + titre + '" placeholder="Titre" id="titre"><input placeholder="description" value="' + description + '" type="text" id="description"/><input type="text" value="' + prix + '" id="prix" placeholder="prix"/>',
+			  		}).setButtonAttributes({
+			  			class : 'button',
+			  			id : {{ key }},
+			  		}).setPopupAttributes({
+			  			class : 'popup pop-' + {{ key }}
+			  		})
+					)
+			{% endfor %}
+			var taggd = new Taggd(image, options, data);
+			$('.delete').click(function(){				
+	    		var index = $(this).attr('data-index'); 
+	    		var tags = taggd.getTags();	    		
+	    		for (var tag in tags){	    			
+	    			if(taggd.getTag(parseInt(tag)).buttonElement.id == index){	    				
+	    				taggd.deleteTag(parseInt(tag));
+	    			}
+	    		}
+	    	});
+
+	    	$('#ambiance').click(function(event){
+        		console.log(ambiance);
+    			var x = event.offsetX;
+    			var y = event.offsetY;
+    			x = x * 100 / $(this).width();
+    			y = y * 100 / $(this).height();
+    	
+    			var tag = taggd.addTag(
+    			Taggd.Tag.createFromObject({
+	    		position: { x: x / 100,  y: y / 100  },
+	    		text: '<span class="delete" data-index="' + i + '" >X</span><input type="text" placeholder="Titre" id="titre"><input placeholder="description" type="text" id="description"/><input type="text" id="prix" placeholder="prix"/>',
+	  			}).setButtonAttributes({
+	  				id : i,
+  					class : 'button'
+	  			}).setPopupAttributes({
+	  				class : 'popup pop-' + i
+	  			})
+  			);
+  			$('.delete').click(function(){
+    		var index = $(this).attr('data-index');    	
+    		var tags = taggd.getTags();
+    		for (var tag in tags){
+    			if(taggd.getTag(parseInt(tag)).buttonElement.id == index){
+    				taggd.deleteTag(parseInt(tag));
+    				}
+    			}
+			});
+  			i++;
+		});	
+
+		$('#submit').click(function(event){ 
+		data = {};
+        tags = {};
+        var width = $('#ambiance').width();
+        var height = $('#ambiance').height();
+        data['title'] = $('input[name=titre]').val();
+        data['description'] = $('textarea[name=description]').val();
+        for(var j = 0; j < taggd.tags.length; j++){
+            var tag = {};
+            tag['x'] = ((taggd.tags[j].buttonElement.offsetLeft * 100) / width) /100;
+            tag['y'] = ((taggd.tags[j].buttonElement.offsetTop * 100) / height) /100;
+            tag['titre'] = $('.pop-'+ j +' > input#titre').val();
+            tag['description'] = $('.pop-'+ j +' > input#description').val();
+            tag['prix'] = $('.pop-'+ j +' > input#prix').val();                
+            tags[j] = tag;            
+        }
+        data['tags'] = tags
+        console.log(data);
+        data = JSON.stringify(data);                
+        $.post(Routing.generate('kagu_edit_exe_ambiance', {data : data, ambiance: ambiance}), function(result){
+            location.href = Routing.generate('kagu_index_ambiance');
+        });  
+	});			
+	});	
+
+				
+			
+	{% else %}
+		<script src="{{ asset('bundles/kagu/js/custom-taggd.js') }}"></script>
+	{% endif %}
 	</script>
+	
+
 </body>
 </html>

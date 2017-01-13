@@ -3,8 +3,6 @@
     margin: 50px auto;
 }
 
-#container > imf 
-
 .button {
     background-image: url('../images/BTN_blanc.png') !important;
     background-color: rgba(0,0,0,0) !important;
@@ -34,4 +32,8 @@
     height: 4px;
     width: 50px;
     color: #FFEE88;
+}
+
+#tag_container {
+    display: none;
 }

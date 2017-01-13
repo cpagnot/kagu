@@ -10,8 +10,8 @@
     <field name="prix" type="float" column="prix" precision="10" scale="0" nullable="false"/>
     <field name="description" type="text" column="description" length="65535" nullable="false"/>
     <field name="titre" type="text" column="titre" length="65535" nullable="false"/>
-    <field name="x" type="integer" column="x" nullable="false"/>
-    <field name="y" type="integer" column="y" nullable="false"/>
+    <field name="x" type="float" column="x" nullable="false"/>
+    <field name="y" type="float" column="y" nullable="false"/>
     <many-to-one field="annonce" target-entity="Ambiance">
       <join-columns>
         <join-column name="annonce" referenced-column-name="id"/>

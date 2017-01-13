@@ -2,6 +2,12 @@ kagu_homepage:
     path:     /dashboard
     defaults: { _controller: KaguBundle:Dashboard:index }
 
+kagu_upload_image:
+    path:   /upload
+    defaults: { _controller: KaguBundle:Utils:uploadImage }
+    options:
+        expose: true
+
 kagu_index_profil:
     path:   /profil/
     defaults: { _controller: KaguBundle:Profil:index }
@@ -9,10 +15,18 @@ kagu_index_profil:
 kagu_index_ambiance:
     path:   /ambiance/
     defaults: { _controller: KaguBundle:Ambiance:index}
+    options:
+        expose: true
 
 kagu_add_ambiance:
     path:    /ambiance/add
     defaults: { _controller: KaguBundle:Ambiance:add }
+
+kagu_add_exe_ambiance:
+    path:   /ambiance/add/exec/{data}
+    defaults: { _controller: KaguBundle:Ambiance:addExec }
+    options:
+        expose: true
 
 kagu_ambiance_ambiance:
     path:   /ambiance/ambiance/{ambiance}
@@ -30,12 +44,14 @@ kagu_edit_ambiance:
     path:   /ambiance/edit/{ambiance}
     defaults: { _controller: KaguBundle:Ambiance:edit }
 
+kagu_edit_exe_ambiance:
+    path: /ambiance/edit/{ambiance}/data/{data}
+    defaults: { _controller: KaguBundle:Ambiance:editExec }
+    options:
+        expose: true
+
 kagu_comment_ambiance:
     path:   /ambiance/id/{id}/comment/{comment}
     defaults: { _controller: KaguBundle:Ambiance:addComment }
     options:
         expose: true
-
-kagu_add_item:
-    path:   /ambiance/{ambiance}/add-item/
-    defaults: { _controller: KaguBundle:Ambiance:addItem }

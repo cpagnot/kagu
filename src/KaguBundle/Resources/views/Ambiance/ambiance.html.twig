@@ -47,7 +47,7 @@
 			{% for meuble in meubles %}
 				data.push(
 					Taggd.Tag.createFromObject({
-			    		position: { x: {{ meuble.x / 100 }}, y: {{ meuble.y / 100 }} },
+			    		position: { x: {{ meuble.x }}, y: {{ meuble.y  }} },
 			    		text: '<h1>{{ meuble.titre }}</h1><p>{{ meuble.description }}</p><p>{{ meuble.prix }}€</p>',
 			  		}).setButtonAttributes({
 			  			class : 'button',

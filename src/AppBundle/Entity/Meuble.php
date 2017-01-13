@@ -36,14 +36,14 @@ class Meuble
     /**
      * @var integer
      *
-     * @ORM\Column(name="x", type="integer", nullable=false)
+     * @ORM\Column(name="x", type="float", nullable=false)
      */
     private $x;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="y", type="integer", nullable=false)
+     * @ORM\Column(name="y", type="float", nullable=false)
      */
     private $y;
 
