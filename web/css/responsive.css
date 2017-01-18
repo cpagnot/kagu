@@ -1,0 +1,54 @@
+@media screen and (max-width: 768px) {
+  .top-bar {
+   position:relative;
+      padding:2% 4%;
+  }
+    #responsive-menu{
+/*height:50vh;*/
+    }
+    .menu-icon.dark{
+        position:absolute !important;
+        top:16px;
+        right:8%;
+    }
+    
+    .cart-mobile{
+        position:absolute;
+        right:25%;
+            top:16px;
+    }
+    
+    .top-bar-left{
+        margin-left: 0;
+        border-left:0;
+        border-bottom:2px solid #ededed !important;
+        border-top:2px solid #ededed;
+        width:100%;
+        margin-top: 10px;
+        
+    }    .top-bar-left .menu li:nth-child(n+2){
+        display: inline-block;
+        width:100%;
+        
+        
+    }
+    
+    .top-bar-left .menu {
+        display: -webkit-inline-box;
+        width:100%;
+        
+    }
+    
+    header .search-btn{
+        margin-top:20px;
+    }
+    
+    header input[type='search'], header input[type='search']::focus{
+        border-right:0px !important;
+        width: 100%;
+    }
+    
+    .top-bar-right{
+        margin-top:40px;
+    }
+}

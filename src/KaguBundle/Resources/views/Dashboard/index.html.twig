@@ -1,16 +1,17 @@
-<html>
-	<head>
-		
-	</head>
-	<body>
-		<header>
-			<ul id="menu">
-				<li><a href="{{ path('kagu_index_profil') }}">Mon profil</a></li>
-				<li><a href="">Wishlist</a></li>
-				<li><a href-"">Messagerie</a></li>
-				<li><a href="">Panier</a></li>
-			</ul>
-		</header>
+{% extends "KaguBundle::Layout/base.html.twig" %}
 
-	</body>
-</html>
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ parent() }}    
+{% endblock %}
+{% block content %}
+	<ul id="menu">
+		<li><a href="{{ path('kagu_index_profil') }}">Mon profil</a></li>
+		<li><a href="">Wishlist</a></li>
+		<li><a href-"">Messagerie</a></li>
+		<li><a href="">Panier</a></li>
+	</ul>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

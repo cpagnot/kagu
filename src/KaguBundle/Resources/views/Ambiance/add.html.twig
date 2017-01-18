@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Ajouter une ambiance</title>
-	{% block stylesheets %}
-		<link rel="stylesheet" href="{{ asset('bundles/kagu/css/custom-taggd.css') }}" type="text/css" media="all" />
-		<link rel="stylesheet" href="{{ asset('css/taggd.css') }}" type="text/css" media="all" />
-		<link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}" type="text/css" media="all" />
-	{% endblock %}
-</head>
-<body>
+{% extends "KaguBundle::Layout/base.html.twig" %}
+
+{% block title %}Ajouter une ambiance{% endblock %}
+{% block head %}
+    {{ parent() }}    
+{% endblock %}
+{% block content %}
 	<div class="main">	
 		<label>Titre</label>
-		<input type="text" name="titre" {% if ambiance is defined and ambiance.titre %}value="{{ ambiance.titre }}" {% endif %}/>
+		<input type="text" name="titre" required {% if ambiance is defined and ambiance.titre %}value="{{ ambiance.titre }}" {% endif %}/>
 		<label>Description</label>
 		<textarea name="description">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>
 		{% if ambiance is not defined %}
@@ -25,12 +21,9 @@
 		<input type="button" id="submit" value="creer">
 	</div>
 	<div id="tag_container"></div>
-	<script src="{{ asset('js/jquery-3.1.1.js') }}"></script>
-	<script src="{{ asset('js/jquery.tagsinput.js') }}"></script>	
-	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-	<script src="{{ asset('bundles/kagu/js/taggd.js') }}"></script>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 	<script type="text/javascript">
 	{% if ambiance is defined %}
 		
@@ -105,15 +98,19 @@
         var height = $('#ambiance').height();
         data['title'] = $('input[name=titre]').val();
         data['description'] = $('textarea[name=description]').val();
-        for(var j = 0; j < taggd.tags.length; j++){
-            var tag = {};
+        j = 0;
+        $('.button').each(function(){
+        	var id = $(this).attr('id');
+        	var tag = {};
             tag['x'] = ((taggd.tags[j].buttonElement.offsetLeft * 100) / width) /100;
             tag['y'] = ((taggd.tags[j].buttonElement.offsetTop * 100) / height) /100;
-            tag['titre'] = $('.pop-'+ j +' > input#titre').val();
-            tag['description'] = $('.pop-'+ j +' > input#description').val();
-            tag['prix'] = $('.pop-'+ j +' > input#prix').val();                
-            tags[j] = tag;            
-        }
+            tag['titre'] = $('.pop-'+ id +' > input#titre').val();
+            tag['description'] = $('.pop-'+ id +' > input#description').val();
+            tag['prix'] = $('.pop-'+ id +' > input#prix').val();                
+            tags[j] = tag;
+            j++;    
+        });
+        
         data['tags'] = tags
         console.log(data);
         data = JSON.stringify(data);                
@@ -124,12 +121,12 @@
 	});	
 
 				
-			
+		</script>
 	{% else %}
+		</script>
 		<script src="{{ asset('bundles/kagu/js/custom-taggd.js') }}"></script>
 	{% endif %}
-	</script>
+{% endblock %}
+	
 	
 
-</body>
-</html>

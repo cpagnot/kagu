@@ -1,40 +1,130 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{ ambiance.titre }}</title>
-	{% block stylesheets %}
-		<link rel="stylesheet" href="{{ asset('bundles/kagu/css/custom-taggd.css') }}" type="text/css" media="all" />
-		<link rel="stylesheet" href="{{ asset('css/taggd.css') }}" type="text/css" media="all" />
-		<link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}" type="text/css" media="all" />
-	{% endblock %}
-</head>
-<body>
-	<div id="container">
-		<img src="{{ asset('img/ambiance/'~ambiance.photo|e) }}" alt="{{ ambiance.description }}" id="ambiance">
-	</div>
-	<div id="section_commentaire">
-		<h1>{{ ambiance.titre }}</h1>
-		<p>Ambiance proposé par {{ ambiance.designer.username }} le {{ ambiance.dateCreation|date('d-m-Y') }}
-		<p>{% for tag in tags %} {{ tag.tag }} ,{% endfor %}
-		<p>{{ ambiance.description }}</p>
-		{% if commentaires %}
-			<h2>Commentaires</h2>
-			<hr>
-			{% for commentaire in commentaires %}
-				<p>{{ commentaire.commentaire }}</p>
-				<p>Par {{ commentaire.user.username }} le {{ commentaire.date|date('d-m-Y')}}
-				<hr>
-			{% endfor %}
-		{% endif %}
-	</div>
-	<textarea id="comment_value"></textarea>
-	<input type="button" id="send_comment" value="Envoyer">
+{% extends "KaguBundle::Layout/base.html.twig" %}
 
-	<script src="{{ asset('js/jquery-3.1.1.js') }}"></script>
-	<script src="{{ asset('js/jquery.tagsinput.js') }}"></script>	
-	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-	<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-	<script src="{{ asset('bundles/kagu/js/taggd.js') }}"></script>
+{% block title %}Ajouter une ambiance{% endblock %}
+{% block head %}
+    {{ parent() }}    
+{% endblock %}
+{% block content %}
+	<div class="row">
+        <div class="large-20 columns">
+            <div class="introduction">
+            	<img src="{{ asset('img/ambiance/'~ambiance.photo|e) }}" style="max-width:100%;" alt="{{ ambiance.description }}" id="ambiance">               
+                <div class="cache"></div>
+                <div class="introduction-container cover align-center">
+                    <h1>{{ ambiance.titre }}</h1>
+                    <div class="info-intro">
+                        <div class="profil-picture align-center row"><img src="{{ asset('img/valentin.jpg') }}">
+                            <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}</p>
+                        </div>                    
+	                    <div class="row align-center">
+	                        <p class="lieu"><span class="icon-pin"></span> Paris</p>
+	                        <p class="tags"><span class="icon-stickers"></span>{% for tag in tags %} {{ tag.tag }} - {% endfor %}</p>
+	                    </div>
+                	</div>
+            	</div>
+        	</div>
+   		</div>
+    </div>
+    <section class="row ambiance">
+        <div class="columns large-18">
+            <div class="row">
+                <div class="columns large-14 medium-8  small-18 " >
+                    <div class="ambiance-content" id="panier">
+                        <div class="row">
+                            <div class="about-ambiance">
+                                <h3>A propos de cette ambiance</h3>
+                                <p>{{ ambiance.description }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-10 medium-8 small-18 columns">
+                                <div class="switch">
+                                    <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+                                    <label class="switch-paddle" for="exampleSwitch">
+                                        <span class="show-for-sr switch-left">Louer</span>
+                                        <span class="show-for-sr switch-right">Acheter</span>
+
+                                    </label>
+
+                                </div>
+                            </div>
+                            <!--<div class="large-10 medium-8  small-18 columns ">
+                                <div class="text-right">
+                                    <a href="#" class="button ">Ajouter l'ambiance au panier</a>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="row product-container ">
+                            {% for meuble in meubles %}
+	                            <article class="product-content large-5 medium-8  small-18 columns">
+	                                <div class="product-img"></div>
+	                                <div class="product-info">
+	                                    <h4>{{ meuble.titre }}</h4>
+	                                    <p><b>Description :</b> </p>
+	                                    <p>{{ meuble.description }}</p>
+	                                    <p><b>Prix :</b> <span class="text-right">{{ meuble.prix }} €</span></p>
+	                                </div>
+	                                <div class="buy-button"><a href="#">Acheter</a></div>
+	                            </article>
+                            {% endfor %}
+
+                        </div>
+
+                        <section class="row commentaire-container">
+                            <h3 class="large-20" >Commentaire (<span>{{ commentaires|length }}</span>)</h3>
+                            {% for commentaire in commentaires %}
+	                            <article class="row commentaire large-20">
+	                                <div class="profil-picture large-1 small-3 columns"><img src="{{ asset('img/valentin.jpg') }}"></div>
+	                                <div class="large-17 small-17 columns">
+	                                    <h5><a href="#">{{ commentaire.user.username }} </a> -  <span class="time-comment">{{ commentaire.date|date('d/m/Y') }}</span></h5>
+	                                    <p>{{ commentaire.commentaire }}
+	                                    </p>
+	                                </div>
+
+	                            </article>
+                            {% endfor %}                            
+                        </section>
+                        <article class="row post-comment">
+                                <form class="columns large-20 small-20">                               	
+                                    <textarea rows="4" cols="90" id="comment_value" placeholder="Votre commentaire..."></textarea>
+                                    <button id="send_comment" type="button"><span class="icon-send"></span></button>
+                                </form>
+                            </article>
+                    </div>
+                </div>
+                <!--<aside class="large-6 medium-8 small-18 columns"  data-sticky-container>
+                    <div class="little-cart-ambiance align-center sticky" data-sticky data-top-anchor="panier:top">
+
+                        <div class="title-cart">
+                            <h3><span class="icon-cart"></span>Mon panier</h3>
+                        </div>
+                        <div class="content-cart">
+                            <ul>
+                                <li>
+                                    <p class="left">Lampe Murale</p>
+                                    <p class="right">25€</p>
+                                </li>
+                                <li>
+                                    <p class="left">Lampe Murale</p>
+                                    <p class="right">25€</p>
+                                </li>
+                                <li class="cart-total">
+                                    <p class="left">TOTAL</p>
+                                    <p class="right">50€</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="button-cart"><a href="#">Payer mon panier</a></div>
+                    </div>
+                </aside>-->
+
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
 	<script src="{{ asset('bundles/kagu/js/comment.js') }}"></script>
 	<script type="text/javascript">
 		var ambiance = {{ ambiance.id }};
@@ -61,5 +151,4 @@
 
 		}); 
 	</script>
-</body>
-</html>
+{% endblock %}

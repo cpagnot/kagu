@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            {% block stylesheets %}
+                <link rel="stylesheet" href="{{ asset('bundles/kagu/css/custom-taggd.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('css/taggd.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('bundles/kagu/css/font.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('bundles/kagu/css/foundation.min.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('bundles/kagu/css/motion-ui.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('bundles/kagu/css/normalize.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('bundles/kagu/css/responsive.css') }}" type="text/css" media="all" />
+                <link rel="stylesheet" href="{{ asset('bundles/kagu/css/styles.css') }}" type="text/css" media="all" />
+            {% endblock %}
+            <title>{% block title %}{% endblock %} - Kagu</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div id="content">{% block content %}{% endblock %}</div>
+        
+    </body>
+    {% block javascripts %}
+        <script src="{{ asset('js/jquery-3.1.1.js') }}"></script>
+        <script src="{{ asset('js/foundation.min.js') }}"></script>   
+        <script src="{{ asset('js/what-input.js') }}"></script>   
+        <script src="{{ asset('js/jquery.tagsinput.js') }}"></script>   
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <script src="{{ asset('bundles/kagu/js/taggd.js') }}"></script>
+    {% endblock %}
+</html>
+    

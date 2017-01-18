@@ -65,6 +65,7 @@ class AmbianceController extends Controller
 
     public function addExecAction($data)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $data = json_decode($data, true);
@@ -154,8 +155,6 @@ class AmbianceController extends Controller
         }
 
         $data = json_decode($data, true);
-
-        dump($data);
 
         foreach ($data['tags'] as $tag) {
            $obj = new Meuble();

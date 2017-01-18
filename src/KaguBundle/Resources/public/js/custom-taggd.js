@@ -2,15 +2,12 @@ var image = document.getElementById('ambiance');
 var options = {};
 var data = [];
 var i = 0;
+var taggd = new Taggd(image, options, data);
 			
 
 $(document).ready(function(){
 
-    if(typeof ambiance == 'undefined'){ 
-        var taggd = new Taggd(image, options, data);    
-    }
-
-    function readURL(input) {
+    function readURL(input) {            
         if (input.files && input.files[0]) {
             var reader = new FileReader();            
             reader.onload = function (e) {
@@ -26,7 +23,7 @@ $(document).ready(function(){
     });
 
     $('#ambiance').click(function(event){
-        console.log(ambiance);
+        console.log(taggd);
     	var x = event.offsetX;
     	var y = event.offsetY;
     	x = x * 100 / $(this).width();
@@ -100,10 +97,7 @@ $(document).ready(function(){
     });
 
 	$('#submit').click(function(event){ 
-
-        if(typeof ambiance == 'undefined'){      
-            $('form#img').submit();
-        }           
+            $('form#img').submit();                 
                      
 	});
   		
