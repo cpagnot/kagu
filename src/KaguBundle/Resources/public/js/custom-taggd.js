@@ -1,4 +1,4 @@
-var image = document.getElementById('ambiance');
+var image = document.getElementById('taggd');
 var options = {};
 var data = [];
 var i = 0;
@@ -11,7 +11,8 @@ $(document).ready(function(){
         if (input.files && input.files[0]) {
             var reader = new FileReader();            
             reader.onload = function (e) {
-            $('#ambiance').attr('src', e.target.result);
+            $('#taggd').attr('src', e.target.result);
+            $('#inputImg').html('<img src="' + e.target.result + '" >');
         }            
         reader.readAsDataURL(input.files[0]);
         }
@@ -19,10 +20,10 @@ $(document).ready(function(){
     
     $("#imgInp").change(function(){
         readURL(this);
-        var image = document.getElementById('ambiance');
+        var image = document.getElementById('taggd');
     });
 
-    $('#ambiance').click(function(event){
+    $('#taggd').click(function(event){
         console.log(taggd);
     	var x = event.offsetX;
     	var y = event.offsetY;
@@ -70,8 +71,8 @@ $(document).ready(function(){
                 // La réponse du serveur
                 data = {};
                 tags = {};
-                var width = $('#ambiance').width();
-                var height = $('#ambiance').height();
+                var width = $('#taggd').width();
+                var height = $('#taggd').height();
                 data['title'] = $('input[name=titre]').val();
                 data['description'] = $('textarea[name=description]').val();
                 for(var j = 0; j < taggd.tags.length; j++){
@@ -85,7 +86,7 @@ $(document).ready(function(){
                 }
                 data['tags'] = tags
                 data['img'] = response.filename;
-                data['ref'] = ms1.getValue();
+                data['ref'] = {};
                 console.log(data);
                 data = JSON.stringify(data);                
                 $.post(Routing.generate('kagu_add_exe_ambiance', {data : data}), function(result){
