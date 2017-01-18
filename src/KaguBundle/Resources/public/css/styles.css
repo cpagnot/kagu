@@ -806,3 +806,29 @@ margin-bottom:20px;
     margin-top:5%;
 }
 
+
+/***** PROFIL *****/
+
+.profil {
+    text-align: center;
+}
+
+.profil h2{
+    text-transform: none;
+    font-size:1.2rem;
+    margin-top: 30px;
+    
+}
+
+.profil a {
+    font-size:0.8rem;
+    color:#333;
+    text-decoration:underline;
+    font-weight:300;
+}
+
+.container-profil{
+    padding-left:2%;
+    border:1px solid #d9d9d9;
+}
+
