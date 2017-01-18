@@ -1,6 +1,8 @@
 /*** GENERAL ***/
 
-
+.main{
+    padding-top:6%;
+}
 /*
 [class*=" large-"] {
     margin: 0 auto;
@@ -299,8 +301,8 @@ header .search-btn {
     top: 0;
     left: 0;
     z-index: 1;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+13,0.35+100 */
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 13%, rgba(0, 0, 0, 0.45) 100%);
     /* FF3.6-15 */
@@ -330,25 +332,36 @@ header .search-btn {
 .grid{
     margin-left:-20px !important;
     margin-right:-20px !important;
-    max-height: 640px;
+/*    max-height: 640px;*/
     height: 100%;
 }
 .ambiance-item{
     position:relative;
-   padding-bottom:20px;
+
+    margin-bottom:20px;
     padding-right:20px;
+    
     overflow: hidden;
+
+/*    padding-top:34%;*/
+    height:100%;
+}
+
+.ambiance-item>a {
+    display:block;
+    width:100%;
     height:100%;
 }
 .ambiance-item img{
     width: 200%;
     max-width: 100%;
-    height: 100%;
+    height:auto;
+    margin-top:-12%;
 }
 
 .ambiance-item .tag-item{
     position:absolute;
-    bottom:20px;
+    bottom:0px;
     left:0;
         padding:10px 30px;
 
@@ -366,19 +379,22 @@ header .search-btn {
 }
 
 .center-btn .button{
-    margin-top:3%;
+    margin-top:5%;
 }
 
 .small-height{
-    max-height:285px;
+    max-height:200px;
+    height:100%;
 }
 
 .middle-height{
-    max-height:425px;
+    max-height:300px;
+    height:100%;
 }
 
 .full-height{
-    max-height:640px;
+    max-height:520px;
+    height:100%;
 }
 /******* HOMEPAGE *****/
 
@@ -695,3 +711,98 @@ textarea {
     display: inline-block;
     vertical-align: middle;
 }
+
+
+/**** ADD AMBIANCE ****/
+
+.add-ambiance {
+    text-align: center;
+    margin: 5% 0;
+}
+
+.add-ambiance h1{
+    text-transform: uppercase;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+.add-ambiance img{
+    width: 15%;
+    margin-bottom:20px;
+}
+
+.add-img{
+    background:#ebebeb;
+   padding:4% 0;
+}
+
+.inputround{
+    border:0 !important;
+    border-radius:30px !important;
+    text-align: center;
+    box-shadow:none!important;
+    position:relative;
+}
+
+.add-img .inputround{
+    margin:0 auto;
+}
+
+.add-img .inputround::after{
+  content: "\e907";
+}
+
+.add-img .input-title{
+    position:relative;
+    margin: 0 auto;
+}
+
+.add-img .icon-edit{
+    color:#707070;
+    position:absolute;
+    top:10px;
+    right:30px;
+}
+
+.input-image {
+    text-align: center;
+    margin:0 auto;
+    color:#333;
+    padding:10% 0;
+    cursor: pointer;
+}
+
+.input-image p:first-of-type{
+    font-weight:600;
+    margin-top:20px;
+}
+
+.input-image p:last-child{
+    font-weight:300;
+    font-size:0.8rem;
+    
+}
+.input-image span{
+font-size:5rem;
+color:#707070;
+margin-bottom:20px;
+}
+
+#imgInp{
+    display:none;
+}
+
+.input-info{
+    margin:5% auto;
+    
+}
+
+.input-info label{
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.input-info .red-button{
+    margin-top:5%;
+}
+
