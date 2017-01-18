@@ -1,7 +1,15 @@
-<html>
-	<body>
+{% extends "KaguBundle::Layout/base.html.twig" %} 
+{% block title %}Ajouter une ambiance{% endblock %} 
+{% block head %} 
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
 		{{ render(controller('FOSUserBundle:Security:login')) }}	
-		Hello World!	
+		nique ta mere!	
 		
-	</body>
-</html>
+{% endblock %} 
+{% block javascripts %} 
+{{ parent() }} 
+{% endblock %}

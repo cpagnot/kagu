@@ -41,7 +41,7 @@
         	<section class="row">
                 <div class="large-12 medium-12 small-12 input-info">
                     <label>À propos de cette ambiance</label>
-                    <textarea name="description" row="6">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>   
+                    <textarea name="description">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>   
                     
                         <div class="text-right">
                     <input type="button" class="red-button right" id="step2" value="Passez à l’étape suivante">

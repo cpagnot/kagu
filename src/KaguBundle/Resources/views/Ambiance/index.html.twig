@@ -33,14 +33,35 @@
                 
                 <ul class="row list-ambiance">
                     {% for ambiance in ambiances %}
-                    <li class="large-10 columns item-ambiance">
+                    
+                    
+                     <li class="large-10 columns item-ambiance">
                         <h2>{{ ambiance.annonce.titre }}</h2>
-                        <p>{{ ambiance.annonce.description }}</p>
-                        <p> Annonce public : {% if ambiance.annonce.public %} Oui <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Retirer</a> {% else %} Non <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Publier</a> {% endif %}
-                            <br/>
-                            <a href="{{ path('kagu_edit_ambiance', { ambiance : ambiance.annonce.id }) }} ">Modifier</a>
-                            <br/>
-                            <a href="{{ path('kagu_delete_ambiance', { ambiance: ambiance.annonce.id }) }}">Supprimer</a>
+                        <p class="user">Proposé par : <span>Valentin Marchand</span></p>
+                        <p class="localisation"><span class="icon-pin"></span>Paris</p>
+                        <div class="img-container"><img src="{{ asset('img/singlepage-ambiance.jpg') }}" alt="{{ ambiance.annonce.titre }}"/>
+                         <p class="location">70€ <span>/mois</span></p>
+                         <p class="prix">700€ <span>achat</span></p>
+                         <span class="icon-heart"></span> 
+                         </div>
+                        <p class="description">{{ ambiance.annonce.description }}</p>
+                         
+                         <!-- On enlève ?
+
+                        <p>{% if ambiance.annonce.public %}
+                            <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Retirer</a>
+                            {% else %}
+                            <br/><div class="action align-center"><a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}"><span class="icon icon-check"></span></a> {% endif %}-->
+                        <div class="action align-center">
+                            
+                            <a href="{{ path('kagu_edit_ambiance', { ambiance : ambiance.annonce.id }) }} "><span class="icon icon-edit"></span></a>
+                            <a href="{{ path('kagu_delete_ambiance', { ambiance: ambiance.annonce.id }) }}"><span class="icon icon-close"></span></a>
+                            </div>
+                        
+                       
+                    </li>
+                    
+                     <!-- On affiche pas les objets 
                             <ul>
                                 {% for objet in ambiance.objets %}
                                 <li>
@@ -50,7 +71,9 @@
                                 </li>
                                 {% endfor %}
                             </ul>
-                    </li>
+                        -->
+                    
+                 
                     {% endfor %}
                 </ul>
                     </div>
