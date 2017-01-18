@@ -2,7 +2,8 @@
 
 {% block title %}Ajouter une ambiance{% endblock %}
 {% block head %}
-    {{ parent() }}    
+    {{ parent() }}
+     <link rel="stylesheet" href="{{ asset('bundles/kagu/css/magicsuggest.css') }}" type="text/css" media="all" />    
 {% endblock %}
 {% block content %}
 
@@ -22,7 +23,7 @@
 		      <form id='img' method="post">
 			     <input type='file' id="imgInp" name="upload" accept="image/*"/>
 		      </form>
-		{% endif %}
+              {% enf if %}
                 <div class="input-image large-16 medium-16 small-18" id="inputImg">
                     <span class="icon-upload" id="inputImg"></span>
                     <p>Téléchargez une photo de votre ambiance</p>
@@ -59,25 +60,21 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-
-
-
-
-<script>
-        $(document).ready(function(){
-    $('#inputImg').click(function () {
-        $('#imgInp').click();
+    <script src="{{ asset('bundles/kagu/js/magicsuggest.js') }}"></script>
+    <script>
+            $(document).ready(function(){
+        $('#inputImg').click(function () {
+            $('#imgInp').click();
+        });
     });
-});
-</script>
-</script>
-
-
+    </script>
 	<script type="text/javascript">
 	{% if ambiance is defined %}
 		
 		var ambiance = {{ ambiance.id }};
 		$(document).ready(function(){
+
+			$('#ms-tagbox').magicSuggest();
 			i = {{ meubles|length }};
 			var image = document.getElementById('ambiance');
 			var options = {};
@@ -172,6 +169,7 @@
 				
 		</script>
 	{% else %}
+			var ms1 = $('#ms-tagbox').magicSuggest();
 		</script>
 		<script src="{{ asset('bundles/kagu/js/custom-taggd.js') }}"></script>
 	{% endif %}

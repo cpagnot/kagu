@@ -1,6 +1,6 @@
 {% extends "KaguBundle::Layout/base.html.twig" %}
 
-{% block title %}Ajouter une ambiance{% endblock %}
+{% block title %}Ambiance {{ ambiance.titre }} proposée par {{ ambiance.designer.username }} {% endblock %}
 {% block head %}
     {{ parent() }}    
 {% endblock %}
@@ -11,14 +11,14 @@
             	<img src="{{ asset('img/ambiance/'~ambiance.photo|e) }}" style="max-width:100%;" alt="{{ ambiance.description }}" id="ambiance">               
                 <div class="cache"></div>
                 <div class="introduction-container cover align-center">
-                    <h1>{{ ambiance.titre }}</h1>
+                    <h1>©</h1>
                     <div class="info-intro">
                         <div class="profil-picture align-center row"><img src="{{ asset('img/valentin.jpg') }}">
                             <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}</p>
                         </div>                    
 	                    <div class="row align-center">
 	                        <p class="lieu"><span class="icon-pin"></span> Paris</p>
-	                        <p class="tags"><span class="icon-stickers"></span>{% for tag in tags %} {{ tag.tag }} - {% endfor %}</p>
+	                        <p class="tags"><span class="icon-stickers"></span>{% for tag in tags %} {{ tag.tag }} {% if not loop.last %} - {% endif %} {% endfor %}</p>
 	                    </div>
                 	</div>
             	</div>
@@ -147,7 +147,7 @@
 					)
 			{% endfor %}
 			var taggd = new Taggd(image, options, data);
-
+            
 
 		}); 
 	</script>

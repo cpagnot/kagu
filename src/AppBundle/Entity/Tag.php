@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Tag
- *
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TagRepository") * 
  * @ORM\Table(name="tag", indexes={@ORM\Index(name="ambiance", columns={"ambiance"})})
  * @ORM\Entity
  */

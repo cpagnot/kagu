@@ -55,3 +55,9 @@ kagu_comment_ambiance:
     defaults: { _controller: KaguBundle:Ambiance:addComment }
     options:
         expose: true
+
+kagu_search:
+    path:  /search/{tags}
+    defaults: { _controller: KaguBundle:Search:search }
+    options:
+        expose : true
