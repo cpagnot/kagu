@@ -6,28 +6,68 @@
      <link rel="stylesheet" href="{{ asset('bundles/kagu/css/magicsuggest.css') }}" type="text/css" media="all" />    
 {% endblock %}
 {% block content %}
-	<div class="main">	
-		<label>Titre</label>
-		<input type="text" name="titre" required {% if ambiance is defined and ambiance.titre %}value="{{ ambiance.titre }}" {% endif %}/>
 
-		<input type="text" class="ms-ctn form-control " style="" id="ms-tagbox">
-		<label>Description</label>
-		<textarea name="description">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>
-		{% if ambiance is not defined %}
-		<form id='img' method="post">
-			<input type='file' id="imgInp" name="upload" accept="image/*"/>
-		</form>
-		{% endif %}
-		<div id="container">
-	    	<img id="ambiance" src="{% if ambiance is defined and ambiance.photo %} /kagu/web/img/ambiance/{{ ambiance.photo }}{% endif %}" alt="your image" />
-		</div>
-		<input type="button" id="submit" value="creer">
-	</div>
-	<div id="tag_container"></div>
+
+	<div class="main">	
+        <section class="row add-ambiance">
+            <div class="large-18 columns">
+                <h1>Création de l'ambiance</h1>
+                <img src="{{ asset('img/timeline.png') }}" alt="Timeline"/>
+                <p>Créez votre ambiance, sa déscription et ajoutez lui une photo</p>
+            </div>
+        </section>
+        <section class="row">
+            <div class="large-20 columns add-img">
+<!--            	<label>Titre</label>-->
+                 {% if ambiance is not defined %}
+		      <form id='img' method="post">
+			     <input type='file' id="imgInp" name="upload" accept="image/*"/>
+		      </form>
+              {% enf if %}
+                <div class="input-image large-16 medium-16 small-18" id="inputImg">
+                    <span class="icon-upload" id="inputImg"></span>
+                    <p>Téléchargez une photo de votre ambiance</p>
+                    <p>(Favoriser les photos horizontale)</p>
+                </div>
+                <div class="input-title large-10 medium-16 small-18">
+                        <input type="text" name="titre" placeholder="Entrez le nom de l'ambiance" required {% if ambiance is defined and ambiance.titre %}value="{{ ambiance.titre }}" {% endif %} class="inputround"/>
+                   <span class="icon-edit"></span>
+                </div>
+               
+            </div>
+            
+        </section>
+       
+	<section class="row">
+        <div class="large-12 medium-12 small-12 input-info">
+            <label>À propos de cette ambiance</label>
+            <textarea name="description" row="6">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>
+
+    
+            <div id="container">
+                <img id="ambiance" src="{% if ambiance is defined and ambiance.photo %} /kagu/web/img/ambiance/{{ ambiance.photo }}{% endif %}" alt="your image" />
+            </div>
+                 <div class="text-right">
+            <input type="button" class="red-button right" id="submit" value="Passez à l’étape suivante">
+            </div>
+            <div id="tag_container">
+                <label>Mots clés de votre ambiance :</label>
+            </div>
+        </div>
+    </section>
+</div>
+
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/kagu/js/magicsuggest.js') }}"></script>
+    <script>
+            $(document).ready(function(){
+        $('#inputImg').click(function () {
+            $('#imgInp').click();
+        });
+    });
+    </script>
 	<script type="text/javascript">
 	{% if ambiance is defined %}
 		

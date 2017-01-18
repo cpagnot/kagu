@@ -51,4 +51,18 @@
     .top-bar-right{
         margin-top:40px;
     }
+    
+    /** END HEADER **/
+    
+    /** GRID AMBIANCE **/
+    
+    .ambiance-item{
+        max-height:400px;
+        height:100%;
+        padding-right:0;
+    }
+    
+    .full-height{
+        display:none;
+    }
 }
