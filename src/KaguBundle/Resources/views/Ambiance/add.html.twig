@@ -2,12 +2,15 @@
 
 {% block title %}Ajouter une ambiance{% endblock %}
 {% block head %}
-    {{ parent() }}    
+    {{ parent() }}
+     <link rel="stylesheet" href="{{ asset('bundles/kagu/css/magicsuggest.css') }}" type="text/css" media="all" />    
 {% endblock %}
 {% block content %}
 	<div class="main">	
 		<label>Titre</label>
 		<input type="text" name="titre" required {% if ambiance is defined and ambiance.titre %}value="{{ ambiance.titre }}" {% endif %}/>
+
+		<input type="text" class="ms-ctn form-control " style="" id="ms-tagbox">
 		<label>Description</label>
 		<textarea name="description">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>
 		{% if ambiance is not defined %}
@@ -24,11 +27,14 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('bundles/kagu/js/magicsuggest.js') }}"></script>
 	<script type="text/javascript">
 	{% if ambiance is defined %}
 		
 		var ambiance = {{ ambiance.id }};
 		$(document).ready(function(){
+
+			$('#ms-tagbox').magicSuggest();
 			i = {{ meubles|length }};
 			var image = document.getElementById('ambiance');
 			var options = {};
@@ -123,6 +129,7 @@
 				
 		</script>
 	{% else %}
+			var ms1 = $('#ms-tagbox').magicSuggest();
 		</script>
 		<script src="{{ asset('bundles/kagu/js/custom-taggd.js') }}"></script>
 	{% endif %}

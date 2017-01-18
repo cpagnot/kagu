@@ -26,6 +26,13 @@ class Ambiance
      */
     private $description;
 
+        /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="date", nullable=false)
+     */
+    private $date_creation;
+
     /**
      * @var boolean
      *
@@ -119,6 +126,29 @@ class Ambiance
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set datecreation
+     *
+     * @param \DateTime $date_creation
+     * @return Commentaire
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
     }
 
     /**

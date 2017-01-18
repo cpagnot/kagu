@@ -68,6 +68,8 @@ class AmbianceController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
+
+
         $data = json_decode($data, true);
         $ambiance = new Ambiance();
         $ambiance->setTitre($data['title']);
@@ -89,6 +91,16 @@ class AmbianceController extends Controller
            $obj->setAnnonce($ambiance);
 
            $em->persist($obj);
+        }
+
+        dump($data);
+
+        foreach ($data['ref'] as $tag) {
+            $newTag = new Tag();
+            $newTag->setTag($tag);
+            $newTag->setAmbiance($ambiance);
+
+            $em->persist($newTag);   
         }
         $em->flush();
         return new JsonResponse(array('response' => true));
