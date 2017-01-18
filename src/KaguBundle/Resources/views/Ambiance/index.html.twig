@@ -1,5 +1,21 @@
 {% extends "KaguBundle::Layout/base.html.twig" %} {% block title %}Ajouter une ambiance{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
-<div class="main">
+<section class="row second-nav">
+    <div class="large-18 columns">
+    <nav>
+       <ul class="menu">
+        <li><a href="">Mon profil</a></li>
+        <li><a href="">Boite de réception</a></li>
+        <li><a href="">Ma wishlist</a></li>
+        <li><a href="" class="active">Mes ambiances</a></li>
+        <li><a href="">Mes ventes</a></li>
+        <li><a href="">Mes achats</a></li>
+        <li><a href="">Mes locations</a></li>
+        </ul> 
+        </nav>
+    </div>
+
+</section>
+<div class="main account">
         <div class="large-18 columns">
             <div class="row">
             <aside class="large-4 columns profil">
@@ -8,12 +24,16 @@
                 <a href="">Modifier mon profil</a>
             </aside>
             <section class="large-16 small-18 columns container-profil">
+                <div class="title-profil">
+                    <h1 class="large-8 columns">Mes ambiances</h1>
+                    <a href="{{ path('kagu_add_ambiance') }}" class="red-button columns">+ Ajouter une ambiance</a>
+                </div>
+                <div class="content-profil">
                 
-                <a href="{{ path('kagu_add_ambiance') }}" class=red-button>Ajouter une ambiance</a>
-                <h1>Liste de vos ambiances</h1>
-                <ul>
+                
+                <ul class="row list-ambiance">
                     {% for ambiance in ambiances %}
-                    <li>
+                    <li class="large-10 columns item-ambiance">
                         <h2>{{ ambiance.annonce.titre }}</h2>
                         <p>{{ ambiance.annonce.description }}</p>
                         <p> Annonce public : {% if ambiance.annonce.public %} Oui <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Retirer</a> {% else %} Non <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Publier</a> {% endif %}
@@ -21,7 +41,6 @@
                             <a href="{{ path('kagu_edit_ambiance', { ambiance : ambiance.annonce.id }) }} ">Modifier</a>
                             <br/>
                             <a href="{{ path('kagu_delete_ambiance', { ambiance: ambiance.annonce.id }) }}">Supprimer</a>
-                            <h3>Liste des objets</h3>
                             <ul>
                                 {% for objet in ambiance.objets %}
                                 <li>
@@ -34,6 +53,7 @@
                     </li>
                     {% endfor %}
                 </ul>
+                    </div>
             </section>
         </div>
     </div>
