@@ -52,6 +52,8 @@
                             <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Retirer</a>
                             {% else %}
                             <br/><div class="action align-center"><a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}"><span class="icon icon-check"></span></a> {% endif %}-->
+                         
+                         <!-- A supprimer quand c'est des résultats de recherche -->
                         <div class="action align-center">
                             
                             <a href="{{ path('kagu_edit_ambiance', { ambiance : ambiance.annonce.id }) }} "><span class="icon icon-edit"></span></a>

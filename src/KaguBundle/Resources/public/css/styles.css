@@ -433,7 +433,7 @@ header .search-btn {
     width: 65%;
     padding-left: 10%;
     margin-left: 5%;
-    background-image: url('../img/quote.png');
+    background-image: url('../images/quote.png');
     background-size: 20%;
     background-position: left;
     background-repeat: no-repeat;
@@ -466,7 +466,7 @@ header .search-btn {
 }
 
 .row-newsletter .bg-fautueil {
-    background: url('../img/rdv_3.png') no-repeat right;
+    background: url('../images/rdv_3.png') no-repeat right;
     width: 100%;
     background-size: 25%;
 }
