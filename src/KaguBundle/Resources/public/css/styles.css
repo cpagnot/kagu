@@ -3,6 +3,12 @@
 .main{
     padding-top:6%;
 }
+
+.hide-for-small-only !important{
+    display:none;
+}
+
+
 /*
 [class*=" large-"] {
     margin: 0 auto;
