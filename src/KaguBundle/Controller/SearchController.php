@@ -29,7 +29,8 @@ class SearchController extends Controller
 		$data = json_decode($tags);
 		dump($data);
 		$em = $this->getDoctrine()->getManager();
-		$tags = $em->getRepository('AppBundle:Tag')->findByTag($tags);
+		$tags = ['c'];
+		$tags = $em->getRepository('AppBundle:Tag')->findBySearch($tags);
 		dump($tags);
 	}
 	
