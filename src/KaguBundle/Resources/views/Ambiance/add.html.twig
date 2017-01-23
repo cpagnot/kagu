@@ -12,24 +12,26 @@
         <div id="first-step">
             <section class="row add-ambiance">
                 <div class="large-18 columns">
-                    <h1>Création de l'ambiance</h1>
+                    <h1>{% if ambiance is not defined %}Création de l'ambiance{% else %}Modifier votre ambiance{% endif %}</h1>
                     <img src="{{ asset('img/Timeline-1.png') }}" alt="Timeline"/>
-                    <p>Créez votre ambiance, sa déscription et ajoutez lui une photo</p>
+                    {% if ambiance is not defined %}
+                        <p>Créez votre ambiance, sa déscription et ajoutez lui une photo</p>
+                    {% endif %}
                 </div>
             </section>
             <section class="row">
                 <div class="large-20 columns add-img">
     <!--            	<label>Titre</label>-->
                      {% if ambiance is not defined %}
-    		      <form id='img' method="post">
-    			     <input type='file' id="imgInp" name="upload" accept="image/*"/>
-    		      </form>
-                  {% endif %}
-                    <div class="input-image large-16 medium-16 small-18" id="inputImg">
-                        <span class="icon-upload" id="inputImg"></span>
-                        <p>Téléchargez une photo de votre ambiance</p>
-                        <p>(Favoriser les photos horizontale)</p>
-                    </div>
+        		        <form id='img' method="post">
+        			        <input type='file' id="imgInp" name="upload" accept="image/*"/>
+        		        </form>
+                        <div class="input-image large-16 medium-16 small-18" id="inputImg">
+                            <span class="icon-upload" id="inputImg"></span>
+                            <p>Téléchargez une photo de votre ambiance</p>
+                            <p>(Favoriser les photos horizontale)</p>
+                        </div>
+                     {% endif %}
                     <div class="input-title large-10 medium-16 small-18">
                             <input type="text" name="titre" placeholder="Entrez le nom de l'ambiance" required {% if ambiance is defined and ambiance.titre %}value="{{ ambiance.titre }}" {% endif %} class="inputround"/>
                        <span class="icon-edit"></span>
@@ -46,23 +48,23 @@
                         <div class="text-right">
                     <input type="button" class="red-button right" id="step2" value="Passez à l’étape suivante">
                     </div>
-                    <div id="tag_container">
+                    <!-- <div id="tag_container">
                         <label>Mots clés de votre ambiance :</label>
-                    </div>
+                    </div> -->
                 </div>
             </section>
         </div>
         <div id="second-step" style="display:none">
             <section class="row add-ambiance">
                 <div class="large-18 columns">
-                    <h1>Création de l'ambiance</h1>
+                    <h1>{% if ambiance is not defined %}Création de l'ambiance{% else %}Modifier votre ambiance{% endif %}</h1>
                     <img src="{{ asset('img/Timeline-2.png') }}" alt="Timeline"/>
                     <p>Cliquez sur le produit que vous souhaitez mettre en vente pour créer sa fiche</p>
                 </div>
             </section>
             <section class="row">
                 <div class="large-20 medium-20 small-20">
-                    <img src="" id="taggd">
+                    <img src="{% if ambiance is defined %}{{ asset('img/ambiance/' ~ ambiance.photo) }}" id="ambiance" {% else %}" id="taggd" {% endif %}>
                 </div>
                 <div class="large-20 medium-20 small-20 input-info">
                     <div class="text-center">

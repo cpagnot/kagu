@@ -1,0 +1,6 @@
+{% extends "KaguBundle::Layout/base.html.twig" %} 
+{% block title %}Se connecter{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
+{% block fos_user_content %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}
+{% endblock %}
