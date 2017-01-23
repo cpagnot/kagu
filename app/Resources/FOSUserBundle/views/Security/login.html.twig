@@ -1,24 +1,29 @@
 {% extends "KaguBundle::Layout/base.html.twig" %} 
-{% block title %}Ajouter une ambiance{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
+{% block title %}Connexion{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
 
 {% block fos_user_content %}
 {% if error %}
     <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 {% endif %}
+<div class="main row">
+    <div class="large-10 medium-12 small-18 columns login-container">
+        <h2 class="text-center">Connexion</h2>
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="align-center login">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <label for="username"></label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" required="required" />
 
-    <label for="username">Le beau label</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+        <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" />
 
-    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-    <input type="password" id="password" name="_password" required="required" />
-
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-</form>
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label><br/><br/>
+<div class="row align-center text-center">
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="text-right red-button"/></div>
+    </form>
+</div>
+    
+</div>
 {% endblock fos_user_content %}
 {% endblock %}
