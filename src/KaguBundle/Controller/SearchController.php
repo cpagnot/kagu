@@ -18,6 +18,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SearchController extends Controller
 {
+	
+	public function indexAction()
+	{
+		return $this->render('KaguBundle:Search:index.html.twig');
+	}
+	
 	public function searchAction($tags)
 	{
 		$data = json_decode($tags);
@@ -26,5 +32,5 @@ class SearchController extends Controller
 		$tags = $em->getRepository('AppBundle:Tag')->findByTag($tags);
 		dump($tags);
 	}
-
+	
 }
