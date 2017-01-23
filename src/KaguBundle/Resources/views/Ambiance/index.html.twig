@@ -2,7 +2,7 @@
 <section class="row second-nav">
     <div class="large-18 columns">
     <nav>
-       <ul class="menu">
+       <ul class="menu menu-profil">
         <li><a href="">Mon profil</a></li>
         <li><a href="">Boite de réception</a></li>
         <li><a href="">Ma wishlist</a></li>
@@ -18,7 +18,7 @@
 <div class="main account">
         <div class="large-18 columns">
             <div class="row">
-            <aside class="large-4 columns profil">
+            <aside class="large-4 small-14 columns profil">
                <div class=""><img src="{{ asset('img/valentin.jpg') }}" alt="Nom prénom"></div> 
                 <h2>Valentin Marchand</h2>
                 <a href="">Modifier mon profil</a>
@@ -35,7 +35,7 @@
                     {% for ambiance in ambiances %}
                     
                     
-                     <li class="large-10 columns item-ambiance">
+                     <li class="large-10 small-20 columns item-ambiance">
                         <h2>{{ ambiance.annonce.titre }}</h2>
                         <p class="user">Proposé par : <span>Valentin Marchand</span></p>
                         <p class="localisation"><span class="icon-pin"></span>Paris</p>
@@ -52,6 +52,8 @@
                             <a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}">Retirer</a>
                             {% else %}
                             <br/><div class="action align-center"><a href="{{ path('kagu_publish_ambiance', { ambiance : ambiance.annonce.id }) }}"><span class="icon icon-check"></span></a> {% endif %}-->
+                         
+                         <!-- A supprimer quand c'est des résultats de recherche -->
                         <div class="action align-center">
                             
                             <a href="{{ path('kagu_edit_ambiance', { ambiance : ambiance.annonce.id }) }} "><span class="icon icon-edit"></span></a>

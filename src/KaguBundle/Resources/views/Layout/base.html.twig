@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {% block head %}
-                    <link rel="icon" type="image/png" href="{{ asset('img/favicon-kagu.png') }}" />
-            {% block stylesheets %}
-                    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/normalize.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/font.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/motion-ui.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('css/taggd.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/custom-taggd.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/styles.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/foundation.css') }}" type="text/css" media="all" />
-                    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/responsive.css') }}" type="text/css" media="all" />
-                    <title>{% block title %}{% endblock %} - Kagu</title>
-            {% endblock stylesheets %}
-        {% endblock %}
-    </head>
+
+<head>
+    {% block head %}
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon-kagu.png') }}" /> {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/normalize.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/font.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/motion-ui.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('css/taggd.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/custom-taggd.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/styles.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/foundation.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/kagu/css/responsive.css') }}" type="text/css" media="all" />
+    <title>{% block title %}{% endblock %} - Kagu</title>
+    {% endblock stylesheets %} {% endblock %}
+</head>
+
 <body>
     <div class="row">
         <header class="large-20 columns">
-            <div class="large-18 header-container">
+            <div class="large-18 header-container header-desktop">
                 <div class="top-bar">
                     <div class="top-bar-title">
                         <div class="logo">
                             <a href="index.php"><img src="{{ asset('img/KAGU.png') }}" alt="logo kagu"></a>
                         </div>
-                        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-                        <a href="#" class="hide-large cart-mobile"><span class="icon-cart"></span></a>
-                        <button class="menu-icon dark" type="button" data-toggle></button>
-                        </span>
+                        
 
                     </div>
                     <div id="responsive-menu" class="row">
@@ -58,10 +55,48 @@
                                         <div class="username-container"><span class="username">Valentin</span><span class="icon-chevron-bas"></span></div>
                                     </a>
                                 </li>
-                                <li class="hide-for-small-only"><a href="#"><span class="icon-cart"></span></a></li>
+                                <li><a href="#"><span class="icon-cart"></span></a></li>
                             </ul>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="large-18 header-container header-mobile">
+                <div class="logo large-8 columns align-left">
+                    <a href="index.php"><img src="{{ asset('img/KAGU.png') }}" alt="logo kagu"></a>
+                </div>
+                <div class="large-12 columns align-right">
+                    <div class="menu-section row">
+                        <ul class="icons-mobile">
+                         <li><a href="#"><span class="icon-heart"></span></a></li>
+                        <li><a href="#"><span class="icon-msg"></span></a></li>
+                        <li><a href="#"><span class="icon-cart"></span></a></li>
+                        </ul>
+                        <div class="menu-toggle">
+                            <div class="one"></div>
+                            <div class="two"></div>
+                            <div class="three"></div>
+                        </div>
+                        <nav class="mobile-nav">
+                            <ul role="navigation" class="hidden">
+                               
+                                <li>                                   <button type="button" class="search-btn"><span class="icon-search"></span></button>
+
+                                    <input type="search" placeholder="Rechercher" class="search-bar">
+                                </li>
+                                <li class="cta-ambiance">
+                                    <a href="#">Découvrez nos ambiances</a>
+
+                                </li>
+                                <li class="row">
+                                    <a href="#" style="display:inherit;">
+                                        <div class="profil-picture"><img src="{{ asset('img/valentin.jpg') }}"></div>
+                                        <div class="username-container"><span class="username">Valentin</span><span class="icon-chevron-bas"></span></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -70,6 +105,29 @@
 
     <div id="content">{% block content %}{% endblock %}</div>
 
+    <div class="row">
+        <div class="large-20 small-20 columns">
+            <footer>
+                <div class="large-18 small-20 columns">
+                    <div class="row">
+                        <div class="large-5 small-20 columns">
+                            <div class="logo-footer menu">
+                                <img src="{{ asset('img/kagu-white.png') }}" alt="logo-blanc" />
+                            </div>
+                        </div>
+                        <div class="large-15 small-20 columns">
+                            <ul class="menu align-right">
+                                <li><a href="#">F.A.Q</a></li>
+                                <li><a href="#">Mentions Légales</a></li>
+                                <li><a href="#">CGU - CGV</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
 </body>
 {% block javascripts %}
 <script src="{{ asset('js/jquery-3.1.1.js') }}"></script>
@@ -81,6 +139,9 @@
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 <script src="{{ asset('bundles/kagu/js/taggd.js') }}"></script>
 <script src="{{ asset('bundles/kagu/js/app.js') }}"></script>
+    <script>
+  $(document).foundation();
+</script>
 
 {% endblock %}
 

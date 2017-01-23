@@ -1,15 +1,251 @@
 {% extends "KaguBundle::Layout/base.html.twig" %} 
-{% block title %}Ajouter une ambiance{% endblock %} 
+{% block title %}Kagu - Les idées viennent de chez vous{% endblock %} 
 {% block head %} 
 {{ parent() }}
 {% endblock %}
 
 {% block content %}
-
+<!--
 		{{ render(controller('FOSUserBundle:Security:login')) }}	
 		nique ta mere!	
+-->
+
+    <div class="row">
+        <div class="large-20 columns">
+            <div class="introduction"> <img id="ambiance" src="{{ asset('img/BG-landing-elisa-2.jpg') }}" style="max-width:100%;" alt="Ambiance-deco">
+                <div class="cover">
+                    <h1>Les idées viennent de chez vous ! </h1>
+                    <div class="row">
+                        <form class="search-form large_14 small-20">
+                            <input type="search" placeholder="Rechercher ce qui vous plait !" class="search-bar"> <span class="icon-search"></span> </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-16 columns">
+            <div class="ambiance-container">
+                <h2> Découvrez nos ambiances</h2>
+                <div class="row grid ambiance-grid">
+                    <div class="large-5 small-10 columns">
+                            <div class="ambiance-item middle-height">
+                                <a href="singlepage-ambiance.php">
+                                    <img src="{{ asset('img/SEVENTIES3.jpg') }}" alt="ambiance 70's" />
+                                    <div class="tag-item">
+                                        <a href="#">70'S</a>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ambiance-item small-height">
+                                <a href="singlepage-ambiance.php">
+
+                                    <img src="{{ asset('img/BAROQUE2.jpg') }}" alt="ambiance Baroque" />
+                                    <div class="tag-item">
+                                        <a href="#">Baroque</a>
+                                    </div>
+                                </a>
+                            </div>
+                    </div>
+                    <div class="large-11 small-10 columns">
+                        <div class="row ligne-item">
+
+                            <div class="large-20 small-20">
+
+                                <div class="ambiance-item small-height">
+                                    <a href="singlepage-ambiance.php">
+
+                                        <img src="{{ asset('img/INDUSTRIEL2.jpg') }}" alt="ambiance Industriel" />
+                                        <div class="tag-item">
+                                            <a href="#">Industriel</a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ligne-item">
+                            <div class="large-11 small-20 columns">
+
+                                <div class="ambiance-item middle-height">
+                                    <a href="singlepage-ambiance.php">
+
+                                        <img src="{{ asset('img/JUNIOR2.jpg') }}" alt="ambiance Junior" />
+                                        <div class="tag-item">
+                                            <a href="#">Junior</a>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="large-9 small-20 columns">
+
+                                <div class="ambiance-item middle-height">
+                                    <a href="singlepage-ambiance.php">
+
+                                        <img src="{{ asset('img/COCOONING2.jpg') }}" alt="ambiance cocooning" />
+                                        <div class="tag-item">
+                                            <a href="#">Cocooning</a>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="large-4 small-10 columns hide-mobile ">
+
+                            <div class="ambiance-item full-height">
+                                                        <a href="singlepage-ambiance.php">
+
+                                <img src="{{ asset('img/BOHEME.jpg') }}" alt="ambiance boheme" />
+                                <div class="tag-item">
+                                    <a href="#">Bohème</a>
+                                </div>
+                                </a>
+                            </div>
+                        
+                    </div>
+ 
+                </div>
+               
+                <div class=" large-20 center-btn">
+                    <button class="red-button"> Voir toutes les ambiances</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-avis">
+        <div class="large-16 small-20 columns">
+            <div class="avis">
+                <h2> Nos clients en parlent le mieux</h2>
+                <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+                    <ul class="orbit-container">
+                        <li class="is-active orbit-slide align-center">
+                            <div class="user-avis">
+                                <img src="{{ asset('img/julie.png') }}" />
+                                <br/>
+                                <p class="text-center">Julie, 32 ans</p>
+                            </div>
+                            <div class="avis-content">
+                                <p class="text-left">En plus de mon activité principale, je passe mes weekends à chiner des meubles anciens pour les remettre en état. Souvent, je ne les conserve pas longtemps avant de les revendre à mon entourage ou en ligne. Kagu est la plateforme idéale qui me permet de financer une partie de cette activité en me mettant en relation avec des personnes intéressées par mon travail et partageant la même passion de la décoration.</p>
+                            </div>
+                        </li>
+                        <li class="orbit-slide">
+                            <div class="user-avis">
+                                <img src="{{ asset('img/pierre.png') }}" />
+                                <br/>
+                                <p class="text-center">Pierre, 24 ans</p>
+                            </div>
+                            <div class="avis-content">
+                                <p class="text-left">J’ai commencé à fabriquer des luminaires et des petits meubles design au lycée avec mon père. Aujourd’hui, je poursuis ces créations pour mes amis, mon entourage et quelques passionnés comme moi que j’ai rencontrés au fil du temps. Grâce à Kagu, j’ai pu commencer à élargir mon cercle de contacts mais aussi découvrir d’autres créateurs qui comme moi aiment partager leurs créations à la communauté !</p>
+                            </div>
+                        </li>
+                        <li class="orbit-slide">
+                            <div class="user-avis">
+                                <img src="{{ asset('img/david.png') }}" />
+                                <br/>
+                                <p class="text-center">David, 26 ans</p>
+                            </div>
+                            <div class="avis-content">
+                                <p class="text-left">Ayant décider d’investir une pièce de ma maison pour y créer un bureau personnel, j’ai été confronté à cette prise de décision qu’est la décoration de mon intérieur. Ma fille m’a parlé de Kagu et j’ai trouvé mon bonheur en quelques minutes. Une personne de mon quartier souhaitait se débarrasser de ses superbes affaires de bureau qu’elle ne trouvait plus à son goût. 2 jours plus tard, tout était monté chez moi !</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <nav class="orbit-bullets">
+                        <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+                        <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                        <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-newsletter">
+        <div class="bg-fautueil">
+            <div class="large-15 small-20 columns">
+                <div class="news-container">
+                    <h2>Découvrez notre sélection d'ambiance</h2>
+                    <p>Recevez toutes les semaines notre sélection des plus belles ambiances proposées par les membres de Kagu</p>
+                    <form class="news-form">
+                        <input type="mail" placeholder="Votre email" class="news-input" />
+                        <br/>
+                        <input type="submit" label="M'inscrire" class="red-button" /> </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-16 small-20 columns partner-container">
+            <h2>Vous n’avez pas une âme d’artiste ni de déménageurs ? <br/> 
+Nos partenaires sont là pour vous aider !</h2>
+            <p>Vous pouvez bénéficiez de réductions sur le services de photos à domicile Ouiflash ainsi que celui de déménagement via TRUSK grâce à notre code promo :
+                <br/>
+                <br/>
+                <br/> <span class="promo-code">KAGUHELPERS</span></p>
+            <div class="row align-center">
+                <div class="large-8 small-20 partner-content"> <img src="{{ asset('img/Ouiflash.png') }}">
+                    <h5>OuiFlash est la première communauté<br/>de professionnels de l’image.</h5>
+                    <p>Un photographe vient directement shooté votre intérieur chez vous !</p>
+                </div>
+                <div class="large-8 small-20  partner-content"> <img src="{{ asset('img/Trusk.png') }}">
+                    <h5>Nous transportons vos<br/>meubles pour vous !</h5>
+                    <p>Plus besoin de louer une camionnette, on s’occupe de tout. Disponible 24/7. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 		
 {% endblock %} 
 {% block javascripts %} 
 {{ parent() }} 
+
+    <script>
+        $(document).ready(function () {
+            var image = document.getElementById('ambiance');
+            var options = {};
+            var data = [];
+            var taggd = new Taggd(image, options, data);
+            taggd.addTag(
+                Taggd.Tag.createFromObject({
+                    position: {
+                        x: 0.65,
+                        y: 0.48
+                    },
+                    text: '<h3>Chaise noire</h3><p>120x50x50cm</p><p>Louez pour 20€/Mois</p>',
+                }).setButtonAttributes({
+                    class: 'button'
+                }).setPopupAttributes({
+                    class: 'popup'
+                })
+            );
+            taggd.addTag(
+                Taggd.Tag.createFromObject({
+                    position: {
+                        x: 0.50,
+                        y: 0.25
+                    },
+                    text: '<h3>Tableau impresioniste</h3><p>180x80cm</p><p>Louez pour 5€/Mois</p>',
+                }).setButtonAttributes({
+                    class: 'button'
+                }).setPopupAttributes({
+                    class: 'popup'
+                })
+            );
+            taggd.addTag(
+                Taggd.Tag.createFromObject({
+                    position: {
+                        x: 0.24,
+                        y: 0.35
+                    },
+                    text: '<h3>Cadre-Étagère en bois</h3><p>40x40cm</p><p>Achetez pour 45€</p> ',
+                }).setButtonAttributes({
+                    class: 'button'
+                }).setPopupAttributes({
+                    class: 'popup'
+                })
+            );
+        });
+    </script>
 {% endblock %}
