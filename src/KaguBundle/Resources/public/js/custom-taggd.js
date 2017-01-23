@@ -86,8 +86,7 @@ $(document).ready(function(){
                 }
                 data['tags'] = tags
                 data['img'] = response.filename;
-                data['ref'] = {};
-                console.log(data);
+                data['ref'] =  ms1.getValue();
                 data = JSON.stringify(data);                
                 $.post(Routing.generate('kagu_add_exe_ambiance', {data : data}), function(result){
                     location.href = Routing.generate('kagu_index_ambiance');

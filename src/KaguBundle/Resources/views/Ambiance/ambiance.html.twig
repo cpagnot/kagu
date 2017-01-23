@@ -11,7 +11,7 @@
             	<img src="{{ asset('img/ambiance/'~ambiance.photo|e) }}" style="max-width:100%;" alt="{{ ambiance.description }}" id="ambiance">               
                 <div class="cache"></div>
                 <div class="introduction-container cover align-center">
-                    <h1>©</h1>
+                    <h1>{{ ambiance.titre }}</h1>
                     <div class="info-intro">
                         <div class="profil-picture align-center row"><img src="{{ asset('img/valentin.jpg') }}">
                             <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}</p>

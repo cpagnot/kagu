@@ -44,13 +44,17 @@
                 <div class="large-12 medium-12 small-18 input-info">
                     <label>À propos de cette ambiance</label>
                     <textarea name="description">{% if ambiance is defined and ambiance.description %}{{ ambiance.description }}{% endif %}</textarea>   
+                    <br>
                     
+                    
+                    <label>Mots clés de votre ambiance :</label>
+                    <div id="tag_container">
+                        
+                    </div> 
                         <div class="text-right">
                     <input type="button" class="red-button right" id="step2" value="Passez à l’étape suivante">
                     </div>
-                    <!-- <div id="tag_container">
-                        <label>Mots clés de votre ambiance :</label>
-                    </div> -->
+                    
                 </div>
             </section>
         </div>
@@ -64,7 +68,7 @@
             </section>
             <section class="row">
                 <div class="large-20 medium-20 small-20">
-                    <img src="{% if ambiance is defined %}{{ asset('img/ambiance/' ~ ambiance.photo) }}" id="ambiance" {% else %}" id="taggd" {% endif %}>
+                    <img src={% if ambiance is defined %}"{{ asset('img/ambiance/' ~ ambiance.photo) }}" id="ambiance" {% else %}"" id="taggd" {% endif %}>
                 </div>
                 <div class="large-20 medium-20 small-20 input-info">
                     <div class="text-center">
@@ -104,9 +108,15 @@
 	{% if ambiance is defined %}
 		
 		var ambiance = {{ ambiance.id }};
+		var ms1 = $('#tag_container').magicSuggest({
+		    value : [{% for tag in tags %}'{{ tag.tag }}' {% if not loop.last %} , {% endif %} {% endfor %}],
+		    placeholder: 'Définissez vos tags',
+		    hideTrigger: true,
+		    data : []
+		});
 		$(document).ready(function(){
 
-			$('#ms-tagbox').magicSuggest();
+		
 			i = {{ meubles|length }};
 			var image = document.getElementById('ambiance');
 			var options = {};
@@ -189,7 +199,8 @@
             j++;    
         });
         
-        data['tags'] = tags
+        data['tags'] = tags;
+        data['ref'] = ms1.getValue();
         console.log(data);
         data = JSON.stringify(data);                
         $.post(Routing.generate('kagu_edit_exe_ambiance', {data : data, ambiance: ambiance}), function(result){
@@ -201,7 +212,11 @@
 				
 		</script>
 	{% else %}
-			var ms1 = $('#ms-tagbox').magicSuggest();
+			var ms1 = $('#tag_container').magicSuggest({
+			    placeholder: 'Définissez vos tags',
+			    hideTrigger: true,
+			    data: []
+			    });
 		</script>
 		<script src="{{ asset('bundles/kagu/js/custom-taggd.js') }}"></script>
 	{% endif %}
