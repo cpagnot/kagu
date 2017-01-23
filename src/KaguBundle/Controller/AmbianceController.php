@@ -73,8 +73,6 @@ class AmbianceController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-
-
         $data = json_decode($data, true);
         $ambiance = new Ambiance();
         $ambiance->setTitre($data['title']);
@@ -98,8 +96,6 @@ class AmbianceController extends Controller
            $em->persist($obj);
         }
 
-        dump($data);
-
         foreach ($data['ref'] as $tag) {
             $newTag = new Tag();
             $newTag->setTag($tag);
@@ -118,6 +114,10 @@ class AmbianceController extends Controller
       $ambiance = $ambianceRepo->find($ambiance);
       $meubles = $em->getRepository('AppBundle:Meuble')->findBy(array( 'annonce' => $ambiance ));
       $commentaires = $em->getRepository('AppBundle:Commentaire')->findBy(array( 'annonce' => $ambiance ));
+      $tags = $em->getRepository('AppBundle:Tag')->findBy(array('ambiance' => $ambiance));
+      foreach($tags as $tag){
+        $em->remove($tag);
+      }
       foreach ($meubles as $meuble) {
         $em->remove($meuble);
       }
@@ -160,11 +160,14 @@ class AmbianceController extends Controller
 
       $meubleRepo = $em->getRepository('AppBundle:Meuble');
       $meubles = $meubleRepo->findBy(array('annonce' => $ambiance));
+      
+      $tags = $em->getRepository('AppBundle:Tag')->findBy(array('ambiance' => $ambiance));
 
      
       return $this->render('KaguBundle:Ambiance:add.html.twig', array(
           'ambiance' => $ambiance,
-          'meubles'  => $meubles
+          'meubles'  => $meubles,
+          'tags'     => $tags
       ));
 
     }
@@ -172,14 +175,27 @@ class AmbianceController extends Controller
     public function editExecAction($data, $ambiance)
     {
         $em = $this->getDoctrine()->getManager();
+        dump($data);
         
         $ambiance = $em->getRepository('AppBundle:Ambiance')->find($ambiance);
         $meubles = $em->getRepository('AppBundle:Meuble')->findBy(array('annonce' => $ambiance  ));
         foreach ($meubles as $meuble) {
           $em->remove($meuble);
         }
-
+        $tags = $em->getRepository('AppBundle:Tag')->findBy(array('ambiance' => $ambiance));
+        foreach($tags as $item){
+          $em->remove($item);
+        }
+        
         $data = json_decode($data, true);
+        
+        foreach ($data['ref'] as $tag) {
+            $newTag = new Tag();
+            $newTag->setTag($tag);
+            $newTag->setAmbiance($ambiance);
+
+            $em->persist($newTag);   
+        }
 
         foreach ($data['tags'] as $tag) {
            $obj = new Meuble();
@@ -228,6 +244,17 @@ class AmbianceController extends Controller
       $em->flush();
 
       return new JsonResponse(array('comment' => $com ));
+    }
+    
+    public function getTagsAction()
+    {
+      $em = $this->getDoctrine()->getManager();
+      $tags = $em->getRepository('AppBundle:Tag')->findAll();
+      $data = array();
+      foreach($tags as $tag){
+        array_push($data, $tag->getTag());
+      }
+      return new JsonResponse(array('data' => $data));
     }
 
 }
