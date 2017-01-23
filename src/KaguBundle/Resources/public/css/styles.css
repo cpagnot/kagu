@@ -9,15 +9,55 @@
 }
 
 
-/*
-[class*=" large-"] {
-    margin: 0 auto;
-}
-*/
 
 .center-btn {
     margin: 0 auto;
     text-align: center;
+}
+
+
+/* LOGIN FORM */
+
+.login-container{
+    margin:3% auto 2% auto;
+    background:#ebebeb;
+    padding:4%
+    
+    
+}
+.login label{
+    display:none;
+}
+.login-container h2{
+  margin-bottom:50px; 
+}
+.login-container .red-button{
+    margin-top:25px;
+}
+
+.login input:not([type="submit"]):not([type="checkbox"]),.register input:not([type="submit"]):not([type="checkbox"]){
+    box-shadow: none !important;
+    display: block;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 0;
+    border-right: 2px solid #ebebeb;
+    background-color: #fefefe;
+    padding-left: 20px;
+    transition: none !important;
+    -webkit-appearance: none;
+}
+.login input:not([type="submit"]):focus,.register input:not([type="submit"]):focus{
+    border-color:#d9d9d9;
+}
+
+.register select{
+    width:25%;
+    margin-right:20px;
+}
+
+.register label{
+    margin-bottom:10px;
 }
 
 
