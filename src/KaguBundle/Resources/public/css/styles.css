@@ -167,7 +167,7 @@ header [class*=" icon-"] {
 }
 
 .top-bar-left {
-    height: 60px;
+    height: 63px;
     margin-left:8%;
 }
 
@@ -945,8 +945,7 @@ border:1px solid #d9d9d9;
 }
 
 
-
-.content-profil .list-ambiance {
+ .list-ambiance {
     width:100%;
     list-style:none;
     margin-left:0;
@@ -960,12 +959,12 @@ border:1px solid #d9d9d9;
     position: relative;
 }
 
-.content-profil .list-ambiance .item-ambiance img{
+.list-ambiance .item-ambiance img{
 
     position: relative;
 }
 
-.content-profil .list-ambiance .item-ambiance h2{
+.list-ambiance .item-ambiance h2{
     text-transform: none;
     font-size:1.3rem;
     color:#333;
@@ -975,7 +974,7 @@ border:1px solid #d9d9d9;
     font-weight: 500;
 }
 
-.content-profil .list-ambiance .item-ambiance .description{
+.list-ambiance .item-ambiance .description{
 
     font-size:0.9rem;
     color:#333;
@@ -1061,4 +1060,25 @@ vertical-align: middle;
 
 .item-ambiance .img-container{
     position:relative;
+}
+
+
+
+/***** RESULTATS *****/
+
+.results{
+    position:relative;
+}
+.results .top-results a, .results .top-results h3{
+    color:#333;
+    font-size:1.1rem;
+    font-weight:500;
+}
+
+.middle-results .list-ambiance .item-ambiance{
+    width:calc(100%/3);
+    display: inline-block;
+    vertical-align: top;
+    padding:2%;
+    position: relative;
 }

@@ -1,1 +1,25 @@
-<h1>Test</h1>
+{% extends "KaguBundle::Layout/base.html.twig" %} {% block title %}Résultats {% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
+
+<div class="main results">
+    <section class="large-18 columns">
+        <div class="row top-results">
+            <div class="colums large-10 text-left">
+                <h3>Résultat de recherche pour : cuisine en bois</h3>
+            </div>
+            <div class="colums large-10 text-right">
+                <a href="#"><span class="icon-menu"></span> Filtres</a>
+            </div>
+
+        </div>
+        <div class="row middle-results">
+            <ul class="row list-ambiance">
+                    
+                    
+                    
+                    
+            </ul>
+        </div>
+
+    </section>
+</div>
+{% endblock %} {% block javascripts %} {{ parent() }} {% endblock %}
