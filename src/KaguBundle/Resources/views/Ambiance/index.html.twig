@@ -38,7 +38,7 @@
                     
                      <li class="large-10 small-20 columns item-ambiance">
                         <h2><a href="{{ path('kagu_ambiance_ambiance', { ambiance: ambiance.annonce.id } ) }}">{{ ambiance.annonce.titre }}</a></h2>
-                        <p class="user">{{ app.user.prenom }} {{ app.user.nom }}</span></p>
+                        <p class="user">{{ app.user.prenom }} {{ app.user.nom }}</p>
                         <p class="localisation"><span class="icon-pin"></span>Paris</p>
                         <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.annonce.photo) }}" alt="{{ ambiance.annonce.titre }}"/>
                          <p class="location">{{ ambiance.prix }} € <span>/mois</span></p>
@@ -64,19 +64,6 @@
                        
                     </li>
                     
-                     <!-- On affiche pas les objets 
-                            <ul>
-                                {% for objet in ambiance.objets %}
-                                <li>
-                                    <h4>{{ objet.titre }}</h4>
-                                    <p>{{ objet.prix }} €</p>
-                                    <p>{{ objet.description }}</p>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        -->
-                    
-                 
                     {% endfor %}
                 </ul>
                     </div>
