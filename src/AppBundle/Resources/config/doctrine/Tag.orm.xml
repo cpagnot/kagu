@@ -9,6 +9,7 @@
     </id>
     <field name="tag" type="text" column="tag" length="65535" nullable="false"/>
     <many-to-one field="ambiance" target-entity="Ambiance">
+      <cascade><cascade-remove /></cascade>
       <join-columns>
         <join-column name="ambiance" referenced-column-name="id"/>
       </join-columns>

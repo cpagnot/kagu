@@ -29,7 +29,12 @@ class AmbianceController extends Controller
       $data[$ambiance->getId()] = array();
       $data[$ambiance->getId()]['annonce'] = $ambiance;
       $objets = $em->getRepository('AppBundle:Meuble')->findBy(array('annonce' => $ambiance->getId()));
+      $prix = 0;
+      foreach($objets as $item){
+        $prix += $item->getPrix();
+      }
       $data[$ambiance->getId()]['objets'] = $objets;
+      $data[$ambiance->getId()]['prix'] = $prix;
     }
 
     return $this->render('KaguBundle:Ambiance:index.html.twig', array(
@@ -75,7 +80,7 @@ class AmbianceController extends Controller
         $ambiance->setTitre($data['title']);
         $ambiance->setDescription($data['description']);
         $ambiance->setDateCreation(new \DateTime());
-        $ambiance->setPublic(false);
+        $ambiance->setPublic(true);
         $ambiance->setDisponible(true);
         $ambiance->setVendu(false);
         $ambiance->setPhoto($data['img']);
@@ -111,6 +116,14 @@ class AmbianceController extends Controller
       $em = $this->getDoctrine()->getManager();
       $ambianceRepo = $em->getRepository('AppBundle:Ambiance');
       $ambiance = $ambianceRepo->find($ambiance);
+      $meubles = $em->getRepository('AppBundle:Meuble')->findBy(array( 'annonce' => $ambiance ));
+      $commentaires = $em->getRepository('AppBundle:Commentaire')->findBy(array( 'annonce' => $ambiance ));
+      foreach ($meubles as $meuble) {
+        $em->remove($meuble);
+      }
+      foreach ($commentaires as $commentaire) {
+        $em->remove($commentaire);
+      }
       try {
         $em->remove($ambiance);
         $em->flush();        

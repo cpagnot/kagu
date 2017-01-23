@@ -47,14 +47,25 @@
                         <div class="top-bar-right columns">
                             <ul class="menu">
 
-                                <li><a href="#"><span class="icon-heart"></span></a></li>
-                                <li><a href="#"><span class="icon-msg"></span></a></li>
-                                <li>
-                                    <a href="#">
-                                        <div class="profil-picture"><img src="{{ asset('img/valentin.jpg') }}"></div>
-                                        <div class="username-container"><span class="username">Valentin</span><span class="icon-chevron-bas"></span></div>
-                                    </a>
-                                </li>
+                                
+                                    {% if is_granted("ROLE_USER") %}
+                                    <li><a href="#"><span class="icon-heart"></span></a></li>
+                                    <li><a href="#"><span class="icon-msg"></span></a></li>
+                                    <li>
+                                        <a href="{{ path('kagu_index_ambiance') }}">
+                                            <div class="profil-picture"><img src="{{ asset('img/valentin.jpg') }}"></div>
+                                            <div class="username-container"><span class="username">{{ app.user.prenom }}</span><span class="icon-chevron-bas"></span></div>
+                                        </a>
+                                    </li>
+                
+                                {% else %}
+                                    <li>
+                                        <a href="{{ path('fos_user_security_login') }}">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                                    </li>
+                                {% endif %}
                                 <li><a href="#"><span class="icon-cart"></span></a></li>
                             </ul>
                         </div>
@@ -89,12 +100,17 @@
                                     <a href="#">Découvrez nos ambiances</a>
 
                                 </li>
-                                <li class="row">
-                                    <a href="#" style="display:inherit;">
-                                        <div class="profil-picture"><img src="{{ asset('img/valentin.jpg') }}"></div>
-                                        <div class="username-container"><span class="username">Valentin</span><span class="icon-chevron-bas"></span></div>
-                                    </a>
-                                </li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li class="row">
+                                        <a href="#" style="display:inherit;">
+                                            <div class="profil-picture"><img src="{{ asset('img/valentin.jpg') }}"></div>
+                                            <div class="username-container"><span class="username">Valentin</span><span class="icon-chevron-bas"></span></div>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                     <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                                {% endif %}
+
                             </ul>
                         </nav>
                     </div>

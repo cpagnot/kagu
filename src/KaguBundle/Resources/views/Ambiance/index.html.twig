@@ -20,7 +20,7 @@
             <div class="row">
             <aside class="large-4 small-14 columns profil">
                <div class=""><img src="{{ asset('img/valentin.jpg') }}" alt="Nom prénom"></div> 
-                <h2>Valentin Marchand</h2>
+                <h2>{{ app.user.prenom }} {{ app.user.nom }} </h2>
                 <a href="">Modifier mon profil</a>
             </aside>
             <section class="large-16 small-18 columns container-profil">
@@ -36,12 +36,12 @@
                     
                     
                      <li class="large-10 small-20 columns item-ambiance">
-                        <h2>{{ ambiance.annonce.titre }}</h2>
-                        <p class="user">Proposé par : <span>Valentin Marchand</span></p>
+                        <h2><a href="{{ path('kagu_ambiance_ambiance', { ambiance: ambiance.annonce.id } ) }}">{{ ambiance.annonce.titre }}</a></h2>
+                        <p class="user">{{ app.user.prenom }} {{ app.user.nom }}</span></p>
                         <p class="localisation"><span class="icon-pin"></span>Paris</p>
-                        <div class="img-container"><img src="{{ asset('img/singlepage-ambiance.jpg') }}" alt="{{ ambiance.annonce.titre }}"/>
-                         <p class="location">70€ <span>/mois</span></p>
-                         <p class="prix">700€ <span>achat</span></p>
+                        <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.annonce.photo) }}" alt="{{ ambiance.annonce.titre }}"/>
+                         <p class="location">{{ ambiance.prix }} € <span>/mois</span></p>
+                         <p class="prix">{{ ambiance.prix * 10 }}€ <span>achat</span></p>
                          <span class="icon-heart"></span> 
                          </div>
                         <p class="description">{{ ambiance.annonce.description }}</p>
