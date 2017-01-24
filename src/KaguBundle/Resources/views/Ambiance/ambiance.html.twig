@@ -17,7 +17,7 @@
                             <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}</p>
                         </div>                    
 	                    <div class="row align-center">
-	                        <p class="lieu"><span class="icon-pin"></span> Paris</p>
+	                        <p class="lieu"><span class="icon-pin"></span> {{ ambiance.designer.ville }}</p>
 	                        <p class="tags"><span class="icon-stickers"></span>{% for tag in tags %} {{ tag.tag }} {% if not loop.last %} - {% endif %} {% endfor %}</p>
 	                    </div>
                 	</div>

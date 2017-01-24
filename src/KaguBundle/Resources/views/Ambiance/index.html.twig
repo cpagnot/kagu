@@ -1,5 +1,4 @@
-{% extends "KaguBundle::Layout/base.html.twig" %} 
-{% block title %}Ajouter une ambiance{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
+{% extends "KaguBundle::Layout/base.html.twig" %} {% block title %}Ajouter une ambiance{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
 <section class="row second-nav">
     <div class="large-18 columns">
     <nav>
@@ -38,8 +37,10 @@
                     
                      <li class="large-10 small-20 columns item-ambiance">
                         <h2><a href="{{ path('kagu_ambiance_ambiance', { ambiance: ambiance.annonce.id } ) }}">{{ ambiance.annonce.titre }}</a></h2>
-                        <p class="user">{{ app.user.prenom }} {{ app.user.nom }}</p>
-                        <p class="localisation"><span class="icon-pin"></span>Paris</p>
+
+                        <p class="user">{{ app.user.prenom }} {{ app.user.nom }}</span></p>
+                        <p class="localisation"><span class="icon-pin"></span>{{ app.user.ville }}</p>
+
                         <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.annonce.photo) }}" alt="{{ ambiance.annonce.titre }}"/>
                          <p class="location">{{ ambiance.prix }} € <span>/mois</span></p>
                          <p class="prix">{{ ambiance.prix * 10 }}€ <span>achat</span></p>

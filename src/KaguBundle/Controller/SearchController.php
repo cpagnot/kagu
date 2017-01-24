@@ -19,18 +19,28 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SearchController extends Controller
 {
 	
-	public function indexAction()
+	public function indexAction($tags = null)
 	{
-		return $this->render('KaguBundle:Search:index.html.twig');
+		if(isset($tags)){
+			$em = $this->getDoctrine()->getManager();
+			$result = $em->getRepository('AppBundle:Tag')->findBySearch($tags);
+			dump($result);
+			return $this->render('KaguBundle:Search:index.html.twig', array(
+				'searchTag' => $tags,
+				'ambiances'	=> $result
+			));
+			
+		}else{
+			return $this->render('KaguBundle:Search:index.html.twig');
+		}
+	
+		
 	}
 	
-	public function searchAction($tags)
+	public function favoriteAction()
 	{
-		$data = json_decode($tags);
-		dump($data);
-		$em = $this->getDoctrine()->getManager();
-		$tags = $em->getRepository('AppBundle:Tag')->findByTag($tags);
-		dump($tags);
+		return $this->render('KaguBundle:Search:favorite.html.twig');
 	}
+
 	
 }

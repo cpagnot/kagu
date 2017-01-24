@@ -24,10 +24,8 @@
                 <div class="top-bar">
                     <div class="top-bar-title">
                         <div class="logo">
-                            <a href="index.php"><img src="{{ asset('img/KAGU.png') }}" alt="logo kagu"></a>
+                            <a href="{{ path('vitrine_homepage') }}"><img src="{{ asset('img/KAGU.png') }}" alt="logo kagu"></a>
                         </div>
-                        
-
                     </div>
                     <div id="responsive-menu" class="row">
                         <div class="top-bar-left columns">
@@ -155,8 +153,19 @@
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 <script src="{{ asset('bundles/kagu/js/taggd.js') }}"></script>
 <script src="{{ asset('bundles/kagu/js/app.js') }}"></script>
-    <script>
+<script>
   $(document).foundation();
+  $(document).ready(function(){
+     $('input.search-bar').keyup(function(e){
+         if( e.which == 13 ){
+            var tag = $('input.search-bar').val();
+            if(tag.length != 0 ){
+                window.location.replace(Routing.generate('kagu_search', { tags : tag }));
+            }
+            
+        }
+     }) 
+  });
 </script>
 
 {% endblock %}

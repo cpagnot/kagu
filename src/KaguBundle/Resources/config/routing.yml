@@ -1,7 +1,3 @@
-kagu_homepage:
-    path:     /dashboard
-    defaults: { _controller: KaguBundle:Dashboard:index }
-
 kagu_upload_image:
     path:   /upload
     defaults: { _controller: KaguBundle:Utils:uploadImage }
@@ -61,14 +57,18 @@ kagu_get_tags:
     defaults: { _controller: KaguBundle:Ambiance:getTags }
     options:
         expose : true
-
-kagu_search_tags:
-    path:  /search/tags/{tags}
-    defaults: { _controller: KaguBundle:Search:search }
-    options:
-        expose : true
         
 kagu_search:
+    path: /search/{tags}
+    defaults: { _controller: KaguBundle:Search:index }
+    options:
+        expose : true
+    
+kagu_search_default:
     path: /search
     defaults: { _controller: KaguBundle:Search:index }
+    
+kagu_favorite:
+    path: /favoris
+    defaults: { _controller: KaguBundle:Search:favorite }
         
