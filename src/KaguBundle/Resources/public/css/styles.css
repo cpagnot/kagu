@@ -503,6 +503,10 @@ margin:0 auto;}
 .nos-ambiances .ambiance-container{
     margin:5% 0;
 }
+
+.item-ambiance h2 a{
+    color:#333;
+}
 /******* HOMEPAGE *****/
 
 
@@ -1150,8 +1154,8 @@ vertical-align: middle;
 }
 
 .middle-results .list-ambiance {
-    margin-left:-2%;
-    margin-right:-2%;
+    margin-left:-2% !important;
+    margin-right:-2% !important;
 }
 
 .middle-results .list-ambiance .item-ambiance{

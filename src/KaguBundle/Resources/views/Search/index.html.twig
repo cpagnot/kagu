@@ -14,7 +14,7 @@
         <div class="row middle-results">
             <ul class="row list-ambiance">
                 {% for ambiance in ambiances %}
-                     <li class="columns item-ambiance">
+                     <li class="item-ambiance">
                         <h2><a href="{{ path('kagu_ambiance_ambiance', { ambiance: ambiance.id } ) }}">{{ ambiance.titre }}</a></h2>
 
                         <p class="user">{{ ambiance.pseudo }}</p>
