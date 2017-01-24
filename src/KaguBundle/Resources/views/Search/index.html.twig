@@ -4,7 +4,7 @@
     <section class="large-18 columns">
         <div class="row top-results">
             <div class="colums large-10 text-left">
-                <h3>Résultat de recherche pour : cuisine en bois</h3>
+                <h3 id="">Résultat de recherche pour : {{ searchTag|default('') }}</h3>
             </div>
             <div class="colums large-10 text-right">
                 <a href="#"><span class="icon-menu"></span> Filtres</a>
@@ -13,10 +13,23 @@
         </div>
         <div class="row middle-results">
             <ul class="row list-ambiance">
+                {% for ambiance in ambiances %}
+                     <li class="large-10 small-20 columns item-ambiance">
+                        <h2><a href="{{ path('kagu_ambiance_ambiance', { ambiance: ambiance.id } ) }}">{{ ambiance.titre }}</a></h2>
+
+                        <p class="user">{{ ambiance.pseudo }}</span></p>
+                        <p class="localisation"><span class="icon-pin"></span>{{ ambiance.ville }}</p>
+
+                        <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.photo) }}" alt="{{ ambiance.titre }}"/>
+                         <p class="location">{{ ambiance.prix }} € <span>/mois</span></p>
+                         <p class="prix">{{ ambiance.prix * 10 }}€ <span>achat</span></p>
+                         <span class="icon-heart"></span> 
+                         </div>
+                        <p class="description">{{ ambiance.description }}</p>
+                       
+                    </li>
                     
-                    
-                    
-                    
+                    {% endfor %}
             </ul>
         </div>
 
