@@ -1,0 +1,161 @@
+{% extends "KaguBundle::Layout/base.html.twig" %} {% block title %}Nos ambiances {% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
+
+<div class="main row  nos-ambiances">
+    <div class="large-16 columns">
+        <div class="ambiance-container">
+            <h2>Nos ambiances</h2>
+            <div class="row grid ambiance-grid">
+                <div class="large-10 small-20 columns">
+                    <div class="ambiance-item big-height">
+                        <a href="singlepage-ambiance.php">
+                            <img src="{{ asset('img/SCANDINAVE.jpg') }}" alt="ambiance 70's" />
+                            <div class="tag-item">
+                                <a href="#">Scandinave</a>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="large-10 small-20 columns">
+                    <div class="ambiance-item small-height">
+                        <a href="singlepage-ambiance.php">
+
+                            <img src="{{ asset('img/VINTAGE.jpg') }}" alt="ambiance Junior" />
+                            <div class="tag-item">
+                                <a href="#">Vintage</a>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="ambiance-item small-height">
+                        <a href="singlepage-ambiance.php">
+
+                            <img src="{{ asset('img/exterieur.jpg') }}" alt="ambiance Junior" />
+                            <div class="tag-item">
+                                <a href="#">Extérieur</a>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row grid ambiance-grid">
+                <div class="large-5 small-10 columns">
+                    <div class="ambiance-item middle-height">
+                        <a href="singlepage-ambiance.php">
+                            <img src="{{ asset('img/SEVENTIES3.jpg') }}" alt="ambiance 70's" />
+                            <div class="tag-item">
+                                <a href="#">70'S</a>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="ambiance-item small-height">
+                        <a href="singlepage-ambiance.php">
+
+                            <img src="{{ asset('img/BAROQUE2.jpg') }}" alt="ambiance Baroque" />
+                            <div class="tag-item">
+                                <a href="#">Baroque</a>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="large-11 small-10 columns">
+                    <div class="row ligne-item">
+
+                        <div class="large-20 small-20">
+
+                            <div class="ambiance-item small-height">
+                                <a href="singlepage-ambiance.php">
+
+                                    <img src="{{ asset('img/INDUSTRIEL2.jpg') }}" alt="ambiance Industriel" />
+                                    <div class="tag-item">
+                                        <a href="#">Industriel</a>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ligne-item">
+                        <div class="large-11 small-20 columns">
+
+                            <div class="ambiance-item middle-height">
+                                <a href="singlepage-ambiance.php">
+
+                                    <img src="{{ asset('img/JUNIOR2.jpg') }}" alt="ambiance Junior" />
+                                    <div class="tag-item">
+                                        <a href="#">Junior</a>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="large-9 small-20 columns">
+
+                            <div class="ambiance-item middle-height">
+                                <a href="singlepage-ambiance.php">
+
+                                    <img src="{{ asset('img/COCOONING2.jpg') }}" alt="ambiance cocooning" />
+                                    <div class="tag-item">
+                                        <a href="#">Cocooning</a>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="large-4 small-10 columns hide-mobile ">
+                    <div class="ambiance-item full-height">
+                        <a href="singlepage-ambiance.php">
+
+                            <img src="{{ asset('img/BOHEME.jpg') }}" alt="ambiance boheme" />
+                            <div class="tag-item">
+                                <a href="#">Bohème</a>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row grid ambiance-grid">
+                <div class="large-10 small-20 columns">
+                    <div class="ambiance-item small-height">
+                        <a href="singlepage-ambiance.php">
+
+                            <img src="{{ asset('img/luxe.jpg') }}" alt="ambiance Junior" />
+                            <div class="tag-item">
+                                <a href="#">Luxe</a>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="ambiance-item small-height">
+                        <a href="singlepage-ambiance.php">
+
+                            <img src="{{ asset('img/contemporain.jpg') }}" alt="ambiance Junior" />
+                            <div class="tag-item">
+                                <a href="#">Contemporain</a>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="large-10 small-20 columns">
+                    <div class="ambiance-item big-height">
+                        <a href="singlepage-ambiance.php">
+                            <img src="{{ asset('img/maisoncampagne.jpg') }}" alt="ambiance 70's" />
+                            <div class="tag-item">
+                                <a href="#">Maison de campagne</a>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block javascripts %} {{ parent() }} {% endblock %}
