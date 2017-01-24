@@ -285,6 +285,8 @@ header .search-btn {
     width: 40%;
 }
 
+.news-form{
+margin:0 auto;}
 
 /**** INTRODUCTION HP & AMBIANCE ****/
 
@@ -938,6 +940,7 @@ margin-bottom:20px;
     padding:1.2rem 0 !important;
     box-sizing: border-box;
     line-height:40px;
+    font-weight:400;
   
 }
 
