@@ -39,7 +39,6 @@ class SearchController extends Controller
 	public function favoriteAction()
 	{
 		return $this->render('KaguBundle:Search:favorite.html.twig');
-	}
-
+    }
 	
 }
