@@ -41,7 +41,5 @@ class SearchController extends Controller
 	{
 		return $this->render('KaguBundle:Search:favorite.html.twig');
     }
-
-
 	
 }
