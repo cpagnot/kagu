@@ -67,4 +67,8 @@ kagu_search:
 kagu_search_default:
     path: /search
     defaults: { _controller: KaguBundle:Search:index }
+    
+kagu_favorite:
+    path: /favoris
+    defaults: { _controller: KaguBundle:Search:favorite }
         
