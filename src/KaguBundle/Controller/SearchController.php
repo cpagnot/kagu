@@ -24,7 +24,6 @@ class SearchController extends Controller
 		if(isset($tags)){
 			$em = $this->getDoctrine()->getManager();
 			$result = $em->getRepository('AppBundle:Tag')->findBySearch($tags);
-			dump($result);
 			return $this->render('KaguBundle:Search:index.html.twig', array(
 				'searchTag' => $tags,
 				'ambiances'	=> $result
