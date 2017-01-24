@@ -28,7 +28,6 @@ class TagRepository extends EntityRepository
        $rsm->addScalarResult('prix', 'prix');
        $rsm->addScalarResult('ville', 'ville');
 
-
         return $this->getEntityManager()
             ->createNativeQuery($sql, $rsm)
             ->getResult();
