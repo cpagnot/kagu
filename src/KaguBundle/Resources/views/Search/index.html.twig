@@ -14,10 +14,10 @@
         <div class="row middle-results">
             <ul class="row list-ambiance">
                 {% for ambiance in ambiances %}
-                     <li class="large-10 small-20 columns item-ambiance">
+                     <li class="columns item-ambiance">
                         <h2><a href="{{ path('kagu_ambiance_ambiance', { ambiance: ambiance.id } ) }}">{{ ambiance.titre }}</a></h2>
 
-                        <p class="user">{{ ambiance.pseudo }}</span></p>
+                        <p class="user">{{ ambiance.pseudo }}</p>
                         <p class="localisation"><span class="icon-pin"></span>{{ ambiance.ville }}</p>
 
                         <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.photo) }}" alt="{{ ambiance.titre }}"/>
