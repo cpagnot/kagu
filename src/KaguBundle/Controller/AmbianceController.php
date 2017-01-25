@@ -265,7 +265,9 @@ class AmbianceController extends Controller
       $listAmbiance = $em->getRepository('AppBundle:Wishlist')->findBy(array('user' => $user));
       $data = array();
       foreach ($listAmbiance as $ambiance) {
+        dump($ambiance);
         $ambiance = $ambiance->getAmbiance();
+        dump($ambiance);
         $data[$ambiance->getId()] = array();
         $data[$ambiance->getId()]['annonce'] = $ambiance;
         $objets = $em->getRepository('AppBundle:Meuble')->findBy(array('annonce' => $ambiance->getId()));

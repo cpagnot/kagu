@@ -14,7 +14,7 @@
                     <h1>{{ ambiance.titre }}</h1>
                     <div class="info-intro">
                         <div class="profil-picture align-center row"><img src="{{ asset('img/valentin.jpg') }}">
-                            <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}<span class="icon-heart"></span> </p>
+                            <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}<span id="{{ ambiance.id }}" class="icon-heart"></span> </p>
                         </div>                    
 	                    <div class="row align-center">
 	                        <p class="lieu"><span class="icon-pin"></span> {{ ambiance.designer.ville }}</p>
