@@ -57,7 +57,9 @@
                         <div class="row product-container ">
                             {% for meuble in meubles %}
 	                            <article class="product-content large-5 medium-8  small-18 columns">
-	                                <div class="product-img"></div>
+	                                <div class="product-img">
+	                                    <img src="{{ asset('img/meuble_default.png')}}" alt ="meuble">
+	                                </div>
 	                                <div class="product-info">
 	                                    <h4>{{ meuble.titre }}</h4>
 	                                    <p><b>Description :</b> </p>
@@ -93,7 +95,7 @@
                             </article>
                     </div>
                 </div>
-                <!--<aside class="large-6 medium-8 small-18 columns"  data-sticky-container>
+                <aside class="large-6 medium-8 small-18 columns"  data-sticky-container>
                     <div class="little-cart-ambiance align-center sticky" data-sticky data-top-anchor="panier:top">
 
                         <div class="title-cart">
@@ -101,23 +103,15 @@
                         </div>
                         <div class="content-cart">
                             <ul>
-                                <li>
-                                    <p class="left">Lampe Murale</p>
-                                    <p class="right">25€</p>
-                                </li>
-                                <li>
-                                    <p class="left">Lampe Murale</p>
-                                    <p class="right">25€</p>
-                                </li>
                                 <li class="cart-total">
                                     <p class="left">TOTAL</p>
-                                    <p class="right">50€</p>
+                                    <p class="right">0€</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="button-cart"><a href="#">Payer mon panier</a></div>
                     </div>
-                </aside>-->
+                </aside>
 
 
             </div>

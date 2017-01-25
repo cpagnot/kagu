@@ -3,7 +3,7 @@
     <div class="large-18 columns">
     <nav>
        <ul class="menu menu-profil">
-        <li><a href="">Mon profil</a></li>
+        <li><a href="{{ path('fos_user_profile_edit') }}">Mon profil</a></li>
         <li><a href="">Boite de réception</a></li>
         <li><a href="">Ma wishlist</a></li>
         <li><a href="" class="active">Mes ambiances</a></li>
@@ -21,7 +21,7 @@
             <aside class="large-4 small-14 columns profil">
                <div class=""><img src="{{ asset('img/valentin.jpg') }}" alt="Nom prénom"></div> 
                 <h2>{{ app.user.prenom }} {{ app.user.nom }} </h2>
-                <div class="row align-center"><a href="">Modifier ma photo</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="">Se déconnecter</a></div>
+                <div class="row align-center"><a href="">Modifier ma photo</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></div>
             </aside>
             <section class="large-16 small-18 columns container-profil">
                 <div class="title-profil">

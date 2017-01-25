@@ -15,7 +15,7 @@
                     <h1>Les idées viennent de chez vous ! </h1>
                     <div class="row">
                         <form class="search-form large_14 small-20">
-                            <input type="search" placeholder="Rechercher ce qui vous plait !" class="search-bar"> <span class="icon-search"></span> </form>
+                            <input id="second-search-bar" type="search" placeholder="Rechercher ce qui vous plait !" class="search-bar"> <span class="icon-search"></span> </form>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 </div>
                
                 <div class=" large-20 center-btn">
-                    <a class="red-button" href="{{ path('kagu_search', { tags : 'a'} ) }}"> Voir toutes les ambiances</a>
+                    <a class="red-button" href="{{ path('kagu_favorite') }}"> Voir toutes les ambiances</a>
                 </div>
             </div>
         </div>
@@ -201,6 +201,16 @@ Nos partenaires sont là pour vous aider !</h2>
 
     <script>
         $(document).ready(function () {
+           
+             $('#second-search-bar').keyup(function(e){
+                 if( e.which == 13 ){
+                    var tag = $('#second-search-bar').val();
+                    if(tag.length != 0 ){
+                        window.location.replace(Routing.generate('kagu_search', { tags : tag }));
+                    }
+                    
+                }
+            }) 
             var image = document.getElementById('ambiance');
             var options = {};
             var data = [];

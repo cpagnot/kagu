@@ -15,7 +15,7 @@ $(document).ready(function () {
      	var $menu = $('.menu-profil');
     
     $('.menu-profil a').on('click', function (e) {
-        e.preventDefault();
+        
       	var $element = $(this);
         
         $menu.find('a').removeClass('active');
