@@ -126,10 +126,11 @@
 			var description = "{{ meuble.description|e }}";
 			var titre = "{{ meuble.titre }}";
 			var prix = "{{ meuble.prix }}";
+			var location = "{{ meuble.prixLoc }}";
 				data.push(
 					Taggd.Tag.createFromObject({
 			    		position: { x: {{ meuble.x }}, y: {{ meuble.y  }} },
-			    		text: '<span class="delete" data-index="' + {{ key}} + '" >X</span><input type="text" value="' + titre + '" placeholder="Titre" id="titre"><input placeholder="description" value="' + description + '" type="text" id="description"/><input type="text" value="' + prix + '" id="prix" placeholder="prix"/>',
+			    		text: '<span class="delete" data-index="' + {{ key}} + '" >X</span><input type="text" value="' + titre + '" placeholder="Titre" id="titre"><input placeholder="description" value="' + description + '" type="text" id="description"/><input type="text" value="' + prix + '" id="prix" placeholder="prix"/><input type="text" id="location" value="' + location + '" placeholder="Location"/>',
 			  		}).setButtonAttributes({
 			  			class : 'button',
 			  			id : {{ key }},
@@ -159,7 +160,7 @@
     			var tag = taggd.addTag(
     			Taggd.Tag.createFromObject({
 	    		position: { x: x / 100,  y: y / 100  },
-	    		text: '<span class="delete" data-index="' + i + '" >X</span><input type="text" placeholder="Titre" id="titre"><input placeholder="description" type="text" id="description"/><input type="text" id="prix" placeholder="prix"/>',
+	    		text: '<span class="delete" data-index="' + i + '" >X</span><input type="text" placeholder="Titre" id="titre"><input placeholder="description" type="text" id="description"/><input type="text" id="prix" placeholder="prix"/><input type="text" id="location" placeholder="Location"/>',
 	  			}).setButtonAttributes({
 	  				id : i,
   					class : 'button'
@@ -195,6 +196,7 @@
             tag['titre'] = $('.pop-'+ id +' > input#titre').val();
             tag['description'] = $('.pop-'+ id +' > input#description').val();
             tag['prix'] = $('.pop-'+ id +' > input#prix').val();                
+            tag['location'] = $('.pop-'+ id +' > input#location').val();                
             tags[j] = tag;
             j++;    
         });

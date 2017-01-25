@@ -33,8 +33,13 @@ class AmbianceController extends Controller
       foreach($objets as $item){
         $prix += $item->getPrix();
       }
+      $location = 0;
+      foreach($objets as $item){
+        $location += $item->getPrixLoc();
+      }
       $data[$ambiance->getId()]['objets'] = $objets;
       $data[$ambiance->getId()]['prix'] = $prix;
+      $data[$ambiance->getId()]['location'] = $location;
     }
 
     return $this->render('KaguBundle:Ambiance:index.html.twig', array(
@@ -90,6 +95,7 @@ class AmbianceController extends Controller
            $obj->setY($tag['y']);
            $obj->setTitre($tag['titre']);
            $obj->setPrix($tag['prix']);
+           $obj->setPrixLoc($tag['location']);
            $obj->setDescription($tag['description']);
            $obj->setAnnonce($ambiance);
 
@@ -182,10 +188,6 @@ class AmbianceController extends Controller
         foreach ($meubles as $meuble) {
           $em->remove($meuble);
         }
-        $tags = $em->getRepository('AppBundle:Tag')->findBy(array('ambiance' => $ambiance));
-        foreach($tags as $item){
-          $em->remove($item);
-        }
         
         $data = json_decode($data, true);
         
@@ -203,6 +205,7 @@ class AmbianceController extends Controller
            $obj->setY($tag['y']);
            $obj->setTitre($tag['titre']);
            $obj->setPrix($tag['prix']);
+           $obj->setPrixLoc($tag['location']);
            $obj->setDescription($tag['description']);
            $obj->setAnnonce($ambiance);
 

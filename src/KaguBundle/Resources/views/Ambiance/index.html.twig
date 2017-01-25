@@ -42,8 +42,8 @@
                         <p class="localisation"><span class="icon-pin"></span>{{ app.user.ville }}</p>
 
                         <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.annonce.photo) }}" alt="{{ ambiance.annonce.titre }}"/>
-                         <p class="location">{{ ambiance.prix }} € <span>/mois</span></p>
-                         <p class="prix">{{ ambiance.prix * 10 }}€ <span>achat</span></p>
+                         <p class="location">{{ ambiance.location|round }} € <span>/mois</span></p>
+                         <p class="prix">{{ ambiance.prix }}€ <span>achat</span></p>
                          <span class="icon-heart"></span> 
                          </div>
                         <p class="description">{{ ambiance.annonce.description }}</p>

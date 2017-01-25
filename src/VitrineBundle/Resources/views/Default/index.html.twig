@@ -28,7 +28,7 @@
                 <div class="row grid ambiance-grid">
                     <div class="large-5 small-10 columns">
                             <div class="ambiance-item middle-height">
-                                <a href="singlepage-ambiance.php">
+                                <a href="{{ path('kagu_search', { tags : '70'} ) }}">
                                     <img src="{{ asset('img/SEVENTIES3.jpg') }}" alt="ambiance 70's" />
                                     <div class="tag-item">
                                         <a href="#">70'S</a>
@@ -36,7 +36,7 @@
                                 </a>
                             </div>
                             <div class="ambiance-item small-height">
-                                <a href="singlepage-ambiance.php">
+                                <a href="{{ path('kagu_search', { tags : 'Baroque'} ) }}">
 
                                     <img src="{{ asset('img/BAROQUE2.jpg') }}" alt="ambiance Baroque" />
                                     <div class="tag-item">
@@ -51,7 +51,7 @@
                             <div class="large-20 small-20">
 
                                 <div class="ambiance-item small-height">
-                                    <a href="singlepage-ambiance.php">
+                                    <a href="{{ path('kagu_search', { tags : 'Industriel'} ) }}">
 
                                         <img src="{{ asset('img/INDUSTRIEL2.jpg') }}" alt="ambiance Industriel" />
                                         <div class="tag-item">
@@ -65,7 +65,7 @@
                             <div class="large-11 small-20 columns">
 
                                 <div class="ambiance-item middle-height">
-                                    <a href="singlepage-ambiance.php">
+                                    <a href="{{ path('kagu_search', { tags : 'Junior'} ) }}">
 
                                         <img src="{{ asset('img/JUNIOR2.jpg') }}" alt="ambiance Junior" />
                                         <div class="tag-item">
@@ -78,7 +78,7 @@
                             <div class="large-9 small-20 columns">
 
                                 <div class="ambiance-item middle-height">
-                                    <a href="singlepage-ambiance.php">
+                                    <a href="{{ path('kagu_search', { tags : 'Cocooning'} ) }}">
 
                                         <img src="{{ asset('img/COCOONING2.jpg') }}" alt="ambiance cocooning" />
                                         <div class="tag-item">
@@ -94,7 +94,7 @@
                     <div class="large-4 small-10 columns hide-mobile ">
 
                             <div class="ambiance-item full-height">
-                                                        <a href="singlepage-ambiance.php">
+                                                        <a href="{{ path('kagu_search', { tags : 'Bohème'} ) }}">
 
                                 <img src="{{ asset('img/BOHEME.jpg') }}" alt="ambiance boheme" />
                                 <div class="tag-item">
@@ -108,7 +108,7 @@
                 </div>
                
                 <div class=" large-20 center-btn">
-                    <button class="red-button"> Voir toutes les ambiances</button>
+                    <a class="red-button" href="{{ path('kagu_search', { tags : 'a'} ) }}"> Voir toutes les ambiances</a>
                 </div>
             </div>
         </div>

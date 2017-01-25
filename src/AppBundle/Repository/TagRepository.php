@@ -10,7 +10,7 @@ class TagRepository extends EntityRepository
     public function findBySearch($tag)
     {
     	$sql = "SELECT a.id as id, a.titre as titre, a.description as description, a.photo as photo,
-    	        u.username as pseudo, SUM(m.prix) as prix, u.ville as ville
+    	        u.username as pseudo, SUM(m.prix) as prix, u.ville as ville, SUM(m.prix_loc) as prix_loc
                 FROM c9.ambiance a 
                 LEFT JOIN c9.tag t ON t.ambiance = a.id
                 LEFT JOIN c9.user u ON a.designer = u.id
@@ -26,6 +26,7 @@ class TagRepository extends EntityRepository
        $rsm->addScalarResult('photo', 'photo');
        $rsm->addScalarResult('pseudo', 'pseudo');
        $rsm->addScalarResult('prix', 'prix');
+       $rsm->addScalarResult('prix_loc', 'prix_loc');
        $rsm->addScalarResult('ville', 'ville');
 
         return $this->getEntityManager()

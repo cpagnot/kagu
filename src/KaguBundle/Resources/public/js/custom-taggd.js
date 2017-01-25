@@ -33,7 +33,7 @@ $(document).ready(function(){
     	var tag = taggd.addTag(
     		Taggd.Tag.createFromObject({
 	    		position: { x: x / 100,  y: y / 100  },
-	    		text: '<span class="delete" data-index="' + i + '" >X</span><input type="text" placeholder="Titre" id="titre"><input placeholder="description" type="text" id="description"/><input type="text" id="prix" placeholder="prix"/>',
+	    		text: '<span class="delete" data-index="' + i + '" >X</span><input type="text" placeholder="Titre" id="titre"><input placeholder="description" type="text" id="description"/><input type="text" id="prix" placeholder="prix"/><input type="text" id="location" placeholder="Location"/>',
 	  		}).setButtonAttributes({
 	  			id : i,
   				class : 'button'
@@ -82,6 +82,7 @@ $(document).ready(function(){
                     tag['titre'] = $('.pop-'+ j +' > input#titre').val();
                     tag['description'] = $('.pop-'+ j +' > input#description').val();
                     tag['prix'] = $('.pop-'+ j +' > input#prix').val();                
+                    tag['location'] = $('.pop-'+ j +' > input#location').val();                
                     tags[j] = tag;            
                 }
                 data['tags'] = tags

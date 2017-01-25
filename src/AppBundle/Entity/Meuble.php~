@@ -18,6 +18,13 @@ class Meuble
      * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=false)
      */
     private $prix;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix_loc", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $prix_loc;
 
     /**
      * @var string
@@ -89,6 +96,29 @@ class Meuble
     public function getPrix()
     {
         return $this->prix;
+    }
+    
+     /**
+     * Set prix
+     *
+     * @param float $prix
+     * @return Meuble
+     */
+    public function setPrixLoc($prix)
+    {
+        $this->prix_loc = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return float 
+     */
+    public function getPrixLoc()
+    {
+        return $this->prix_loc;
     }
 
     /**

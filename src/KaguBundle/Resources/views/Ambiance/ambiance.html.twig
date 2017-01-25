@@ -62,7 +62,8 @@
 	                                    <h4>{{ meuble.titre }}</h4>
 	                                    <p><b>Description :</b> </p>
 	                                    <p>{{ meuble.description }}</p>
-	                                    <p><b>Prix :</b> <span class="text-right">{{ meuble.prix }} €</span></p>
+	                                    <p><b>Prix achat:</b> <span class="text-right">{{ meuble.prix }} €</span></p>
+	                                    <p><b>Prix location:</b> <span class="text-right">{{ meuble.prixLoc|round }} €</span></p>
 	                                </div>
 	                                <div class="buy-button"><a href="#">Acheter</a></div>
 	                            </article>
@@ -138,7 +139,7 @@
 				data.push(
 					Taggd.Tag.createFromObject({
 			    		position: { x: {{ meuble.x }}, y: {{ meuble.y  }} },
-			    		text: '<h1>{{ meuble.titre }}</h1><p>{{ meuble.description }}</p><p>{{ meuble.prix }}€</p>',
+			    		text: '<h1>{{ meuble.titre }}</h1><p>{{ meuble.description }}</p><p>Achat :{{ meuble.prix }}€<br>Location :{{ meuble.prixLoc|round }}€</p>',
 			  		}).setButtonAttributes({
 			  			class : 'button',
 			  		}).setPopupAttributes({

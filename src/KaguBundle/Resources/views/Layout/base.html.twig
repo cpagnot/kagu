@@ -37,7 +37,7 @@
                                     <input type="search" placeholder="Rechercher" class="search-bar">
                                 </li>
                                 <li>
-                                    <a href="#">Découvrez nos ambiances</a>
+                                    <a href="{{ path('kagu_favorite') }}">Découvrez nos ambiances</a>
 
                                 </li>
                             </ul>
@@ -52,8 +52,14 @@
                                     <li>
                                         <a href="{{ path('kagu_index_ambiance') }}">
                                             <div class="profil-picture"><img src="{{ asset('img/valentin.jpg') }}"></div>
-                                            <div class="username-container"><span class="username">{{ app.user.prenom }}</span></div>
+                                            <div class="username-container"><span class="username">{{ app.user.username }}</span></div>
                                         </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            Se déconnecter
+                                        </a>
+                                        
                                     </li>
                 
                                 {% else %}
