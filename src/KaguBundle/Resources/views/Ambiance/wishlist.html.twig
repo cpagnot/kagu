@@ -1,0 +1,64 @@
+{% extends "KaguBundle::Layout/base.html.twig" %} {% block title %}Ma wishlist{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
+<section class="row second-nav">
+    <div class="large-18 columns">
+    <nav>
+       <ul class="menu menu-profil">
+        <li><a href="{{ path('fos_user_profile_edit') }}">Mon profil</a></li>
+        <li><a href="">Boite de réception</a></li>
+        <li><a href="" class="active">Ma wishlist</a></li>
+        <li><a href="{{ path('kagu_index_ambiance') }}">Mes ambiances</a></li>
+        <li><a href="">Mes ventes</a></li>
+        <li><a href="">Mes achats</a></li>
+        <li><a href="">Mes locations</a></li>
+        </ul> 
+        </nav>
+    </div>
+
+</section>
+<div class="main account">
+        <div class="large-18 columns">
+            <div class="row">
+            <aside class="large-4 small-14 columns profil">
+               <div class=""><img src="{{ asset('img/valentin.jpg') }}" alt="Nom prénom"></div> 
+                <h2>{{ app.user.prenom }} {{ app.user.nom }} </h2>
+                <div class="row align-center"><a href="">Modifier ma photo</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></div>
+            </aside>
+            <section class="large-16 small-18 columns container-profil">
+                <div class="title-profil">
+                    <h1 class="large-8 columns">Ma wishlist</h1>
+                </div>
+                <div class="content-profil">
+                
+                
+                <ul class="row list-ambiance">
+                    {% for ambiance in ambiances %}
+                    
+                    
+                     <li class="large-10 small-20 columns item-ambiance">
+                        <h2><a href="{{ path('kagu_ambiance_ambiance', { ambiance: ambiance.annonce.id } ) }}">{{ ambiance.annonce.titre }}</a></h2>
+
+                        <p class="user">{{ app.user.prenom }} {{ app.user.nom }}</p>
+                        <p class="localisation"><span class="icon-pin"></span>{{ app.user.ville }}</p>
+
+                        <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.annonce.photo) }}" alt="{{ ambiance.annonce.titre }}"/>
+                         <p class="location">{{ ambiance.location|round }} € <span>/mois</span></p>
+                         <p class="prix">{{ ambiance.prix }}€ <span>achat</span></p>
+                         <span class="icon-heart heart-active"></span> 
+                         </div>
+                        <p class="description">{{ ambiance.annonce.description }}</p>
+                         
+                         <!-- On enlève ?
+
+                         <!-- A supprimer quand c'est des résultats de recherche -->
+                        
+                       
+                    </li>
+                    
+                    {% endfor %}
+                </ul>
+                    </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block javascripts %} {{ parent() }} {% endblock %}

@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use AppBundle\Entity\Wishlist;
 
 class UtilsController extends Controller {
 
@@ -24,6 +25,34 @@ class UtilsController extends Controller {
 	   }
 
 	   return new JsonResponse($status);
+	}
+	
+	public function addWishlistAction($ambiance)
+	{
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+		$em = $this->getDoctrine()->getManager();
+		$ambiance = $em->getRepository('AppBundle:Ambiance')->find($ambiance);
+		$wishExist = $em->getRepository('AppBundle:Wishlist')->findOneBy(
+			array(
+				'user' => $user,
+				'ambiance' => $ambiance
+			)
+		);
+		
+		if($wishExist){
+			$em->remove($wishExist);
+			$status = array('action' => 'delete', 'result' => true);
+		}else{
+			$wish = new Wishlist();
+			$wish->setUser($user);
+			$wish->setAmbiance($ambiance);
+			$em->persist($wish);
+			$status = array('action' => 'add', 'result' => true);
+		}
+		
+		$em->flush();
+		
+		return new JsonResponse($status);
 	}
 	
 }

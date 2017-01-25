@@ -8,11 +8,11 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="prix" type="float" column="prix" precision="10" scale="0" nullable="false"/>
-    <field name="prix_loc" type="float" column="prix_loc" precision="10" scale="0" nullable="true"/>
     <field name="description" type="text" column="description" length="65535" nullable="false"/>
     <field name="titre" type="text" column="titre" length="65535" nullable="false"/>
-    <field name="x" type="float" column="x" nullable="false"/>
-    <field name="y" type="float" column="y" nullable="false"/>
+    <field name="x" type="float" column="x" precision="10" scale="0" nullable="false"/>
+    <field name="y" type="float" column="y" precision="10" scale="0" nullable="false"/>
+    <field name="prix_loc" type="float" column="prix_loc" precision="10" scale="0" nullable="true"/>
     <many-to-one field="annonce" target-entity="Ambiance">
       <join-columns>
         <join-column name="annonce" referenced-column-name="id"/>

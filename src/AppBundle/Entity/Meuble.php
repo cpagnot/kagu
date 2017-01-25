@@ -101,12 +101,12 @@ class Meuble
      /**
      * Set prix
      *
-     * @param float $prix
+     * @param float $prix_loc
      * @return Meuble
      */
-    public function setPrixLoc($prix)
+    public function setPrixLoc($prix_loc)
     {
-        $this->prix_loc = $prix;
+        $this->prix_loc = $prix_loc;
 
         return $this;
     }
@@ -245,4 +245,10 @@ class Meuble
     {
         return $this->annonce;
     }
+    /**
+     * @var float
+     */
+    private $prixLoc;
+
+
 }

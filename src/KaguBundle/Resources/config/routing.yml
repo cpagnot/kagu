@@ -3,6 +3,12 @@ kagu_upload_image:
     defaults: { _controller: KaguBundle:Utils:uploadImage }
     options:
         expose: true
+        
+kagu_add_wishlist:
+    path:   /wishlist/ambiance/{ambiance}
+    defaults: { _controller: KaguBundle:Utils:addWishlist }
+    options:
+        expose: true
 
 kagu_index_profil:
     path:   /profil/
@@ -45,6 +51,10 @@ kagu_edit_exe_ambiance:
     defaults: { _controller: KaguBundle:Ambiance:editExec }
     options:
         expose: true
+        
+kagu_wishlist:
+    path: /wishlist
+    defaults: { _controller: KaguBundle:Ambiance:wishlist }
 
 kagu_comment_ambiance:
     path:   /ambiance/id/{id}/comment/{comment}

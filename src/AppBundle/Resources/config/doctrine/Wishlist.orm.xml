@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\Tag"  repository-class="AppBundle\Repository\TagRepository"> table="tag">
+  <entity name="AppBundle\Entity\Wishlist" table="wishlist">
     <indexes>
-      <index name="ambiance" columns="ambiance"/>
+      <index name="fk_user" columns="user"/>
+      <index name="fk_ambiance" columns="ambiance"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="tag" type="text" column="tag" length="65535" nullable="false"/>
     <many-to-one field="ambiance" target-entity="Ambiance">
       <join-columns>
         <join-column name="ambiance" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="User">
+      <join-columns>
+        <join-column name="user" referenced-column-name="ID"/>
       </join-columns>
     </many-to-one>
   </entity>

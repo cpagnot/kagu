@@ -275,4 +275,10 @@ class Ambiance
     {
         return $this->designer;
     }
+    /**
+     * @var \DateTime
+     */
+    private $dateCreation;
+
+
 }

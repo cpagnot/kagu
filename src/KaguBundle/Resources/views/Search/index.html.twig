@@ -23,7 +23,7 @@
                         <div class="img-container"><img src="{{ asset('img/ambiance/' ~ ambiance.photo) }}" alt="{{ ambiance.titre }}"/>
                          <p class="location">{{ ambiance.prix_loc|round }} € <span>/mois</span></p>
                          <p class="prix">{{ ambiance.prix }}€ <span>achat</span></p>
-                         <span class="icon-heart"></span> 
+                         <span id="{{ ambiance.id }}" class="icon-heart"></span> 
                          </div>
                         <p class="description">{{ ambiance.description }}</p>
                        
@@ -35,4 +35,17 @@
 
     </section>
 </div>
-{% endblock %} {% block javascripts %} {{ parent() }} {% endblock %}
+{% endblock %} {% block javascripts %} {{ parent() }}
+<script>
+    $('document').ready(function(){
+       $('.icon-heart').click(function(){
+            var id = $(this).attr('id'); 
+            $(this).addClass('heart-active');
+            $.post(Routing.generate('kagu_add_wishlist', { ambiance : id }), function(){
+                
+                console.log('add');
+            });
+       }); 
+    });
+</script>
+{% endblock %}

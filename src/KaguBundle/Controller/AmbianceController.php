@@ -223,7 +223,6 @@ class AmbianceController extends Controller
       $meuble = $em->getRepository('AppBundle:Meuble')->findBy(array('annonce' => $ambiance ));
       $tag = $em->getRepository('AppBundle:Tag')->findBy(array('ambiance' => $ambiance));
       $commentaires = $em->getRepository('AppBundle:Commentaire')->findBy(array('annonce' => $ambiance));
-
       return $this->render('KaguBundle:Ambiance:ambiance.html.twig', array(
         'ambiance'      => $ambiance,
         'meubles'       => $meuble,
@@ -258,6 +257,38 @@ class AmbianceController extends Controller
         array_push($data, $tag->getTag());
       }
       return new JsonResponse(array('data' => $data));
+    }
+    
+    public function wishlistAction(){
+      $user = $this->get('security.token_storage')->getToken()->getUser();
+      $em = $this->getDoctrine()->getManager();
+      $listAmbiance = $em->getRepository('AppBundle:Wishlist')->findBy(array('user' => $user));
+      dump($listAmbiance);
+      foreach ($listAmbiance as $ambiance) {
+        $ambiance = $ambiance->getAmbiance();
+        $data[$ambiance->getId()] = array();
+        $data[$ambiance->getId()]['annonce'] = $ambiance;
+        $objets = $em->getRepository('AppBundle:Meuble')->findBy(array('annonce' => $ambiance->getId()));
+        $prix = 0;
+        foreach($objets as $item){
+          $prix += $item->getPrix();
+        }
+        $location = 0;
+        foreach($objets as $item){
+          $location += $item->getPrixLoc();
+        }
+        $data[$ambiance->getId()]['objets'] = $objets;
+        $data[$ambiance->getId()]['prix'] = $prix;
+        $data[$ambiance->getId()]['location'] = $location;
+        
+        
+    
+      }
+      
+      return $this->render('KaguBundle:Ambiance:wishlist.html.twig', array(
+            'ambiances' => $data
+        ));
+        
     }
 
 }
