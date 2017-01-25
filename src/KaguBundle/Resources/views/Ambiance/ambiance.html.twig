@@ -14,7 +14,7 @@
                     <h1>{{ ambiance.titre }}</h1>
                     <div class="info-intro">
                         <div class="profil-picture align-center row"><img src="{{ asset('img/valentin.jpg') }}">
-                            <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}</p>
+                            <p>proposé par {{ ambiance.designer.username }}, le {{ ambiance.dateCreation|date('d-m-Y') }}<span class="icon-heart"></span> </p>
                         </div>                    
 	                    <div class="row align-center">
 	                        <p class="lieu"><span class="icon-pin"></span> {{ ambiance.designer.ville }}</p>
@@ -125,6 +125,16 @@
 		var ambiance = {{ ambiance.id }};
 		var username = "{{ app.user.username }}";
 		$(document).ready(function(){
+		    
+   
+           $('.icon-heart').click(function(){
+                var id = $(this).attr('id'); 
+                $(this).addClass('heart-active');
+                $.post(Routing.generate('kagu_add_wishlist', { ambiance : id }), function(){
+                    
+                    console.log('add');
+                });
+           }); 
 			var image = document.getElementById('ambiance');
 			var options = {};
 			var data = [];

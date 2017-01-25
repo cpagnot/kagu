@@ -263,7 +263,7 @@ class AmbianceController extends Controller
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $em = $this->getDoctrine()->getManager();
       $listAmbiance = $em->getRepository('AppBundle:Wishlist')->findBy(array('user' => $user));
-      dump($listAmbiance);
+      $data = array();
       foreach ($listAmbiance as $ambiance) {
         $ambiance = $ambiance->getAmbiance();
         $data[$ambiance->getId()] = array();

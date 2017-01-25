@@ -47,7 +47,7 @@
 
                                 
                                     {% if is_granted("ROLE_USER") %}
-                                    <li><a href="#"><span class="icon-heart"></span></a></li>
+                                    <li><a href="{{ path('kagu_wishlist') }}"><span class="icon-heart"></span></a></li>
                                     <li><a href="#"><span class="icon-msg"></span></a></li>
                                     <li>
                                         <a href="{{ path('kagu_index_ambiance') }}">

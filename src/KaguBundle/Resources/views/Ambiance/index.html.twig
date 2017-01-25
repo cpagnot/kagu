@@ -1,11 +1,11 @@
-{% extends "KaguBundle::Layout/base.html.twig" %} {% block title %}Ajouter une ambiance{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
+{% extends "KaguBundle::Layout/base.html.twig" %} {% block title %}Mes ambiances{% endblock %} {% block head %} {{ parent() }} {% endblock %} {% block content %}
 <section class="row second-nav">
     <div class="large-18 columns">
     <nav>
        <ul class="menu menu-profil">
         <li><a href="{{ path('fos_user_profile_edit') }}">Mon profil</a></li>
         <li><a href="">Boite de réception</a></li>
-        <li><a href="">Ma wishlist</a></li>
+        <li><a href="{{ path('kagu_wishlist') }}">Ma wishlist</a></li>
         <li><a href="" class="active">Mes ambiances</a></li>
         <li><a href="">Mes ventes</a></li>
         <li><a href="">Mes achats</a></li>
@@ -72,4 +72,7 @@
         </div>
     </div>
 </div>
-{% endblock %} {% block javascripts %} {{ parent() }} {% endblock %}
+{% endblock %} {% block javascripts %} {{ parent() }} 
+<script>
+</script>
+{% endblock %}
