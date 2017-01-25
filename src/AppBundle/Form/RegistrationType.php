@@ -15,7 +15,11 @@ class RegistrationType extends AbstractType
                 ->add('adresse', 'text')
                 ->add('ville', 'text')
                 ->add('CP', 'text')
-                ->add('date_naissance', 'date')
+                
+            ->add('dateNaissance', 'date', array(
+            'format' => 'dd-MMMM-yyyy',
+            'years' =>  range(\date("Y"), \date("Y") - 100),
+            ))
                 ->add('telephone', 'text');
     }
 
